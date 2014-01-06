@@ -1,0 +1,22 @@
+teachers:
+	keys:               | description
+	INT id              - unique id number
+	INT salary          - teacher's salary
+        INT salary_year     - year of that salary
+	STRING first        - first name
+	STRING last         - last name
+	address[]{
+	     STRING address - address
+	     STRING map     - Google Maps url
+	     STRING phone   - phone number
+	     }	     
+	INT imgWidth        - Google Image resized width
+	INT imgHeight       - Google Image resized height
+	STRING image	    - Google image url
+        INT rmt_overall     - ratemyteachers.com
+        INT rmt_easiness    - ratemyteachers.com
+	INT rmt_helpfulness - ratemyteachers.com
+        INT rmt_clarity     - ratemyteachers.com
+        INT rmt_num_reviews - ratemyteachers.com
+
+
