@@ -24,4 +24,4 @@ proj3-6-JJTS
 
 <h2>Special Thanks</h2>
 
-Thanks to Andrew Zarenberg and Eli Cohen for original work. 
+Thanks to Andrew Zarenberg and Eli Cohen for original work.
