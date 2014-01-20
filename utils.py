@@ -32,5 +32,33 @@ params = json.dumps(data).replace("null","-1")
 request = urllib2.Request(url, params)
 response = urllib2.urlopen(request)
 data = json.loads(response.read())
+count = 0
+asdf = data["ProductListItems"]
 
-print data["ProductListItems"][0]["Title"]
+while (
+while (count < 20):
+    final = asdf[count]
+    addstuff = dict()
+    addstuff["Title"] = final["Title"].encode("ascii","ignore")
+    addstuff["fPrice"] = final["FinalPrice"].encode("ascii","ignore")
+    addstuff["oPrice"] = final["OriginalPrice"].encode("ascii","ignore")
+    addstuff["Model"] = final["Model"].encode("ascii","ignore")
+    addstuff["ItemNumber"] = final["ItemNumber"].encode("ascii","ignore")
+    addstuff["Newegg"] = final["NeweggItemNumber"].encode("ascii","ignore")
+    addstuff["Rating"] = final["ReviewSummary"]["Rating"]
+    addstuff["numRating"] = final["ReviewSummary"]["TotalReviews"].encode("ascii","ignore")
+    #add this stuff into a db
+    count = count + 1
+
+url = "http://www.ows.newegg.com/Products.egg/{item}/Specification".replace("{item}", addstuff["ItemNumber"])
+response = urllib2.urlopen(request)
+data = json.loads(response.read())
+#print data
+
+#print data["ProductListItems"][0]
+total = data["PaginationInfo"]["TotalCount"]
+
+pagenum = 2
+#while (pagenum * 20 < total):
+#   repeat for all the pages 
+
