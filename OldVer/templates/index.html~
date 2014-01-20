@@ -1,6 +1,0 @@
-<form method="GET">
-Address: <input type="text" name="address">
-Name: <input type="text" name="name">
-<br>
-<input type="submit" name="button" value="Submit">
-</form>
