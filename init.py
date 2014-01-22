@@ -69,7 +69,7 @@ def init(group, names,something):
         addstuff["Rating"] = final["ReviewSummary"]["Rating"]
         addstuff["numRating"] = final["ReviewSummary"]["TotalReviews"].encode("ascii","ignore")
         if (check(addstuff["Title"])):
-            db.names.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff})
+            db.names[i].insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff})
             print(addstuff["Title"])
         count = count + 1
         
@@ -116,7 +116,7 @@ def init(group, names,something):
             str1 = "Open Box"
             str2 = "Refurbished"
             if (check(addstuff["Title"])):
-                db.names.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff})
+                db.names[i].insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff})
                 print(addstuff["Title"])
             count = count + 1
                 
@@ -125,6 +125,6 @@ def init(group, names,something):
         
 i = 0
 while (i < 8):
-    init(group[i], names[i], 0)
+    init(group[i], names, 0,i)
     i = i + 1
 init(mobos, "mobos", 1)
