@@ -20,21 +20,21 @@ gpus = data[23]
 group = [cases,cpus,hdds,ram,mobos,psus,ssds,gpus]
 names = ["cases","cpus","hdds","ram","mobos","psus","ssds","gpus"]
 
-i = 0
-while (i < 8):
-    catID = str(group[i]["CategoryID"])
-    nodID = str(group[i]["NodeId"])
+
+def init(group, names,something):
+    catID = str(group["CategoryID"])
+    nodID = str(group["NodeId"])
     
     url = "http://www.ows.newegg.com/Stores.egg/Navigation/1/{Cat}/{Node}"
     url1 = url.replace("{Cat}", catID)
     url2 = url1.replace("{Node}", nodID)
     resp = urllib2.urlopen(url2)
     data = json.loads(resp.read())
-    #data[1] for motherboards to account for intel and amd
-    subcatID = data[0]["CategoryID"]
-    nodeID = data[0]["NodeId"]
+        #data[1] for motherboards to account for intel and amd
+    subcatID = data[something]["CategoryID"]
+    nodeID = data[something]["NodeId"]
     
-
+    
     data = {
         "SubCategoryId": subcatID, 
         "NValue": "", 
@@ -65,7 +65,7 @@ while (i < 8):
         addstuff["Newegg"] = final["NeweggItemNumber"].encode("ascii","ignore")
         addstuff["Rating"] = final["ReviewSummary"]["Rating"]
         addstuff["numRating"] = final["ReviewSummary"]["TotalReviews"].encode("ascii","ignore")
-        db.names[i].insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff})
+        db.names.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff})
         print(addstuff["Title"])
         count = count + 1
         
@@ -73,7 +73,7 @@ while (i < 8):
 #response = urllib2.urlopen(request)
 #data = json.loads(response.read())
 #print data
-
+        
 #print data["ProductListItems"][0]
     total = data["PaginationInfo"]["TotalCount"]
         
@@ -109,10 +109,15 @@ while (i < 8):
             addstuff["Newegg"] = final["NeweggItemNumber"].encode("ascii","ignore")
             addstuff["Rating"] = final["ReviewSummary"]["Rating"]
             addstuff["numRating"] = final["ReviewSummary"]["TotalReviews"].encode("ascii","ignore")
-            db.names[i].insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff})
+            db.names.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff})
             print(addstuff["Title"])
             count = count + 1
-            
+                
         pagenum = pagenum + 1
-
+                
+        
+i = 0
+while (i < 8):
+    init(group[i], names[i], 0)
     i = i + 1
+init(mobos, "mobos", 1)
