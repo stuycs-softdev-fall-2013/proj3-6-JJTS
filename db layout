@@ -1,0 +1,43 @@
+Database
+		|
+		|
+		Users
+		|_____
+		|	  password
+		|	  |
+		|	  builds
+		|	  |______
+		|			 |
+		|			 name
+		|			 |_____
+		|				   |
+		|				   parts
+		|	  
+		|
+		Stupid Builds(Timothy's)
+		|____
+		|	 name
+		|	 |______
+		|	        |
+		|			parts
+		|	  
+		|
+		|
+		|
+		Budget Builds(Jia)
+		|____
+			 name
+			 |______
+			        |
+					part
+					
+					
+					
+parts - CPU
+		GPU
+		TOWER
+		RAM
+		SSD
+		HARD-DRIVE
+		COOLING UNIT
+		OTHER
