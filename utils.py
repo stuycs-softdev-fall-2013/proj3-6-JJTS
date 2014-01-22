@@ -12,4 +12,16 @@ def getSpecs(itemnum):
     data = json.loads(response.read())
     return data["SpecificationGroupList"]
 
+#Database Work=============================================================
+def register(username,password,chkpw):
+    if(users.find({"username":user}).count()) != 0:
+        return False
+    elif(chkpw != password):
+        return False
+    else:
+        db.users.insert({'username':username, 'password' : password})
+        return True
 
+def loginin(user,password):
+
+#End DB Work==============================================================
