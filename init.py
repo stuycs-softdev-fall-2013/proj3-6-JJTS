@@ -21,6 +21,9 @@ group = [cases,cpus,hdds,ram,mobos,psus,ssds,gpus]
 names = ["cases","cpus","hdds","ram","mobos","psus","ssds","gpus"]
 
 
+def check(string):
+    return ((not("Open Box" in string)) and (not("Refurbished" in string)))
+
 def init(group, names,something):
     catID = str(group["CategoryID"])
     nodID = str(group["NodeId"])
@@ -65,8 +68,9 @@ def init(group, names,something):
         addstuff["Newegg"] = final["NeweggItemNumber"].encode("ascii","ignore")
         addstuff["Rating"] = final["ReviewSummary"]["Rating"]
         addstuff["numRating"] = final["ReviewSummary"]["TotalReviews"].encode("ascii","ignore")
-        db.names.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff})
-        print(addstuff["Title"])
+        if (check(addstuff["Title"])):
+            db.names.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff})
+            print(addstuff["Title"])
         count = count + 1
         
 #url = "http://www.ows.newegg.com/Products.egg/{item}/Specification".replace("{item}", addstuff["ItemNumber"])
@@ -109,8 +113,11 @@ def init(group, names,something):
             addstuff["Newegg"] = final["NeweggItemNumber"].encode("ascii","ignore")
             addstuff["Rating"] = final["ReviewSummary"]["Rating"]
             addstuff["numRating"] = final["ReviewSummary"]["TotalReviews"].encode("ascii","ignore")
-            db.names.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff})
-            print(addstuff["Title"])
+            str1 = "Open Box"
+            str2 = "Refurbished"
+            if (check(addstuff["Title"])):
+                db.names.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff})
+                print(addstuff["Title"])
             count = count + 1
                 
         pagenum = pagenum + 1
