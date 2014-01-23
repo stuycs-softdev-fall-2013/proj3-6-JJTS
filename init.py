@@ -74,29 +74,53 @@ def init(group, names,something,i):
         #thingy = json.loads(response1.read())
         if (check(addstuff["Title"])):
              if(i == 0):
-                 specs = utils.getCaseSpecs(addstuff['ItemNumber'])
-                 db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                 try:
+                     specs = utils.getCaseSpecs(addstuff['ItemNumber'])
+                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                 except:
+                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':'error'})
              if(i == 1):
-                 specs = utils.getCPUSpecs(addstuff['ItemNumber'])
-                 db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                 try:
+                     specs = utils.getCPUSpecs(addstuff['ItemNumber'])
+                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                 except:
+                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':'error'})
              if(i == 2):
-                 specs = utils.getHDDSpecs(addstuff['ItemNumber'])
-                 db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                 try:
+                     specs = utils.getHDDSpecs(addstuff['ItemNumber'])
+                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                 except:
+                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':'error'})
              if(i == 3):
-                 specs = utils.getRAMSpecs(addstuff['ItemNumber'])
-                 db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                 try:
+                     specs = utils.getRAMSpecs(addstuff['ItemNumber'])
+                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                 except:
+                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':'error'})
              if(i == 4):
-                 specs = utils.getMoboSpecs(addstuff['ItemNumber'])
-                 db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                 try:
+                     specs = utils.getMoboSpecs(addstuff['ItemNumber'])
+                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                 except:
+                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':'error'})
              if(i == 5):
-                 specs = utils.getPSUSpecs(addstuff['ItemNumber'])
-                 db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                 try:
+                     specs = utils.getPSUSpecs(addstuff['ItemNumber'])
+                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                 except:
+                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':'error'})
              if(i == 6):
-                 specs = utils.getSSDSpecs(addstuff['ItemNumber'])
-                 db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                 try:
+                     specs = utils.getSSDSpecs(addstuff['ItemNumber'])
+                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                 except:
+                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':'error'})
              if(i == 7):
-                 specs = utils.getGPUSpecs(addstuff['ItemNumber'])
-                 db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                 try:
+                     specs = utils.getGPUSpecs(addstuff['ItemNumber'])
+                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                 except:
+                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':'error'})
              print(addstuff["Title"])
         count = count + 1
         
