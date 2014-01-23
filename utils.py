@@ -15,20 +15,25 @@ def getCaseSpecs(itemnum):
     expan = dict()
     front = dict()
     data = data["SpecificationGroupList"]
-    for x in data[0]["SpecificationPairList"]:
-        model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[1]["SpecificationPairList"]:
-        specs[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[2]["SpecificationPairList"]:
-        expan[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[3]["SpecificationPairList"]:
-        front[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    results = dict()
-    results["Model"] = model
-    results["Specifications"] = specs
-    results["Expansion"] = expan
-    results["Front"] = front
-    return results
+    try:
+        for x in data[0]["SpecificationPairList"]:
+            model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[1]["SpecificationPairList"]:
+            specs[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[2]["SpecificationPairList"]:
+            expan[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[3]["SpecificationPairList"]:
+            front[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        results = dict()
+        results["Model"] = model
+        results["Specifications"] = specs
+        results["Expansion"] = expan
+        results["Front"] = front
+        return results
+    except:
+        results = dict()
+        results["Error"] = "error"
+        return results
 
 def getCPUSpecs(itemnum):
     url = "http://www.ows.newegg.com/Products.egg/{item}/Specification".replace("{item}", itemnum)
@@ -38,17 +43,22 @@ def getCPUSpecs(itemnum):
     socke = dict()
     specs = dict()
     data = data["SpecificationGroupList"]
-    for x in data[0]["SpecificationPairList"]:
-        model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[1]["SpecificationPairList"]:
-        socke[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[2]["SpecificationPairList"]:
-        specs[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    results = dict()
-    results["Model"] = model
-    results["Socket"] = socke
-    results["Specifications"] = specs
-    return results
+    try:
+        for x in data[0]["SpecificationPairList"]:
+            model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[1]["SpecificationPairList"]:
+            socke[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[2]["SpecificationPairList"]:
+            specs[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        results = dict()
+        results["Model"] = model
+        results["Socket"] = socke
+        results["Specifications"] = specs
+        return results
+    except:
+        results = dict()
+        results["Error"] = "error"
+        return results
 
 def getHDDSpecs(itemnum):
     url = "http://www.ows.newegg.com/Products.egg/{item}/Specification".replace("{item}", itemnum)
@@ -58,17 +68,22 @@ def getHDDSpecs(itemnum):
     perfo = dict()
     physi = dict()
     data = data["SpecificationGroupList"]
-    for x in data[0]["SpecificationPairList"]:
-        model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[1]["SpecificationPairList"]:
-        perfo[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[2]["SpecificationPairList"]:
-        physi[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    results = dict()
-    results["Model"] = model
-    results["Performance"] = perfo
-    results["Physical"] = physi
-    return results
+    try:
+        for x in data[0]["SpecificationPairList"]:
+            model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[1]["SpecificationPairList"]:
+            perfo[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[2]["SpecificationPairList"]:
+            physi[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        results = dict()
+        results["Model"] = model
+        results["Performance"] = perfo
+        results["Physical"] = physi
+        return results
+    except:
+        results = dict()
+        results["Error"] = "error"
+        return results
 
 def getMoboSpecs(itemnum):
     url = "http://www.ows.newegg.com/Products.egg/{item}/Specification".replace("{item}", itemnum)
@@ -82,29 +97,34 @@ def getMoboSpecs(itemnum):
     rearp = dict()
     physi = dict()
     data = data["SpecificationGroupList"]
-    for x in data[0]["SpecificationPairList"]:
-        model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[1]["SpecificationPairList"]:
-        cpu[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[3]["SpecificationPairList"]:
-        ram[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[5]["SpecificationPairList"]:
-        stora[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[8]["SpecificationPairList"]:
-        lan[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[9]["SpecificationPairList"]:
-        rearp[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[11]["SpecificationPairList"]:
-        physi[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    results = dict()
-    results["Model"] = model
-    results["CPU"] = cpu
-    results["Memory"] = ram
-    results["Storage"] = stora
-    results["LAN"] = lan
-    results["Rear Panel"] = rearp
-    results["Physical"] = physi
-    return results
+    try:
+        for x in data[0]["SpecificationPairList"]:
+            model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[1]["SpecificationPairList"]:
+            cpu[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[3]["SpecificationPairList"]:
+            ram[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[5]["SpecificationPairList"]:
+            stora[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[8]["SpecificationPairList"]:
+            lan[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[9]["SpecificationPairList"]:
+            rearp[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[11]["SpecificationPairList"]:
+            physi[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        results = dict()
+        results["Model"] = model
+        results["CPU"] = cpu
+        results["Memory"] = ram
+        results["Storage"] = stora
+        results["LAN"] = lan
+        results["Rear Panel"] = rearp
+        results["Physical"] = physi
+        return results
+    except:
+        results = dict()
+        results["Error"] = "error"
+        return results
 
 def getPSUSpecs(itemnum):
     url = "http://www.ows.newegg.com/Products.egg/{item}/Specification".replace("{item}", itemnum)
@@ -113,14 +133,19 @@ def getPSUSpecs(itemnum):
     model = dict()
     specs = dict()
     data = data["SpecificationGroupList"]
-    for x in data[0]["SpecificationPairList"]:
-        model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[1]["SpecificationPairList"]:
-        specs[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    results = dict()
-    results["Model"] = model
-    results["Specifications"] = specs
-    return results
+    try:
+        for x in data[0]["SpecificationPairList"]:
+            model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[1]["SpecificationPairList"]:
+            specs[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        results = dict()
+        results["Model"] = model
+        results["Specifications"] = specs
+        return results
+    except:
+        results = dict()
+        results["Error"] = "error"
+        return results
 
 def getSDDSpecs(itemnum):
     url = "http://www.ows.newegg.com/Products.egg/{item}/Specification".replace("{item}", itemnum)
@@ -130,17 +155,22 @@ def getSDDSpecs(itemnum):
     physi = dict()
     perfo = dict()
     data = data["SpecificationGroupList"]
-    for x in data[0]["SpecificationPairList"]:
-        model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[1]["SpecificationPairList"]:
-        physi[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[2]["SpecificationPairList"]:
-        perfo[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    results = dict()
-    results["Model"] = model
-    results["Physical"] = physi
-    results["Performance"] = perfo
-    return results
+    try:
+        for x in data[0]["SpecificationPairList"]:
+            model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[1]["SpecificationPairList"]:
+            physi[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[2]["SpecificationPairList"]:
+            perfo[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        results = dict()
+        results["Model"] = model
+        results["Physical"] = physi
+        results["Performance"] = perfo
+        return results
+    except:
+        results = dict()
+        results["Error"] = "error"
+        return results
 
 def getGPUSpecs(itemnum):
     url = "http://www.ows.newegg.com/Products.egg/{item}/Specification".replace("{item}", itemnum)
@@ -151,17 +181,22 @@ def getGPUSpecs(itemnum):
     memor = dict()
     ports = dict()
     data = data["SpecificationGroupList"]
-    for x in data[0]["SpecificationPairList"]:
-        model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[2]["SpecificationPairList"]:
-        chips[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[3]["SpecificationPairList"]:
-        memor[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[5]["SpecificationPairList"]:
-        ports[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    results = dict()
-    results["Model"] = model
-    results["Chipset"] = chips
-    results["Memory"] = memor
-    results["Ports"] = ports
-    return results
+    try:
+        for x in data[0]["SpecificationPairList"]:
+            model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[2]["SpecificationPairList"]:
+            chips[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[3]["SpecificationPairList"]:
+            memor[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[5]["SpecificationPairList"]:
+            ports[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        results = dict()
+        results["Model"] = model
+        results["Chipset"] = chips
+        results["Memory"] = memor
+        results["Ports"] = ports
+        return results
+    except:
+        results = dict()
+        results["Error"] = "error"
+        return results

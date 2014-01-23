@@ -25,7 +25,42 @@ names = ["cases","cpus","hdds","ram","mobos","psus","ssds","gpus"]
 def check(string):
     return ((not("Open Box" in string)) and (not("Refurbished" in string)) and (not("ELEC" in string)) and (not("Laiputuo" in string)))
 
-def init(group, names,something,i):
+def thing(addstuff, i):
+    if(i == 0):
+        specs = utils.getCaseSpecs(addstuff['ItemNumber'])
+        db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+        
+    if(i == 1):
+        specs = utils.getCPUSpecs(addstuff['ItemNumber'])
+        db.cpus.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+        
+    if(i == 2):
+        specs = utils.getHDDSpecs(addstuff['ItemNumber'])
+        db.hdds.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+        
+    if(i == 3):
+        specs = utils.getRAMSpecs(addstuff['ItemNumber'])
+        db.ram.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+
+    if(i == 4):
+        specs = utils.getMoboSpecs(addstuff['ItemNumber'])
+        db.mobos.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+        
+    if(i == 5):
+        specs = utils.getPSUSpecs(addstuff['ItemNumber'])
+        db.psus.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+            
+    if(i == 6):
+        specs = utils.getSSDSpecs(addstuff['ItemNumber'])
+        db.ssds.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+
+    if(i == 7):
+        specs = utils.getGPUSpecs(addstuff['ItemNumber'])
+        db.gpus.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+
+    print(addstuff["Title"])
+
+def init(group, names,something,thingy):
     catID = str(group["CategoryID"])
     nodID = str(group["NodeId"])
     
@@ -73,55 +108,7 @@ def init(group, names,something,i):
         #response1 = urllib2.urlopen(url5)
         #thingy = json.loads(response1.read())
         if (check(addstuff["Title"])):
-             if(i == 0):
-                 try:
-                     specs = utils.getCaseSpecs(addstuff['ItemNumber'])
-                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
-                 except:
-                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':'error'})
-             if(i == 1):
-                 try:
-                     specs = utils.getCPUSpecs(addstuff['ItemNumber'])
-                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
-                 except:
-                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':'error'})
-             if(i == 2):
-                 try:
-                     specs = utils.getHDDSpecs(addstuff['ItemNumber'])
-                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
-                 except:
-                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':'error'})
-             if(i == 3):
-                 try:
-                     specs = utils.getRAMSpecs(addstuff['ItemNumber'])
-                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
-                 except:
-                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':'error'})
-             if(i == 4):
-                 try:
-                     specs = utils.getMoboSpecs(addstuff['ItemNumber'])
-                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
-                 except:
-                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':'error'})
-             if(i == 5):
-                 try:
-                     specs = utils.getPSUSpecs(addstuff['ItemNumber'])
-                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
-                 except:
-                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':'error'})
-             if(i == 6):
-                 try:
-                     specs = utils.getSSDSpecs(addstuff['ItemNumber'])
-                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
-                 except:
-                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':'error'})
-             if(i == 7):
-                 try:
-                     specs = utils.getGPUSpecs(addstuff['ItemNumber'])
-                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
-                 except:
-                     db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':'error'})
-             print(addstuff["Title"])
+            thing(addstuff,thingy)
         count = count + 1
         
 #url = "http://www.ows.newegg.com/Products.egg/{item}/Specification".replace("{item}", addstuff["ItemNumber"])
@@ -168,31 +155,7 @@ def init(group, names,something,i):
             #response1 = urllib2.urlopen(url5)
             #thingy = json.loads(response1.read())
             if (check(addstuff["Title"])):
-                if(i == 0):
-                    specs = utils.getCaseSpecs(addstuff['ItemNumber'])
-                    db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
-                if(i == 1):
-                    specs = utils.getCPUSpecs(addstuff['ItemNumber'])
-                    db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
-                if(i == 2):
-                    specs = utils.getHDDSpecs(addstuff['ItemNumber'])
-                    db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
-                if(i == 3):
-                    specs = utils.getRAMSpecs(addstuff['ItemNumber'])
-                    db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
-                if(i == 4):
-                    specs = utils.getMoboSpecs(addstuff['ItemNumber'])
-                    db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
-                if(i == 5):
-                    specs = utils.getPSUSpecs(addstuff['ItemNumber'])
-                    db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
-                if(i == 6):
-                    specs = utils.getSSDSpecs(addstuff['ItemNumber'])
-                    db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
-                if(i == 7):
-                    specs = utils.getGPUSpecs(addstuff['ItemNumber'])
-                    db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
-                print(addstuff["Title"])
+                thing(addstuff,thingy)
             count = count + 1
                 
         pagenum = pagenum + 1
