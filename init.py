@@ -1,5 +1,6 @@
 import json, urllib, urllib2
 from pymongo import MongoClient
+import utils
 
 client = MongoClient()
 db = client.pcparts
@@ -24,7 +25,7 @@ names = ["cases","cpus","hdds","ram","mobos","psus","ssds","gpus"]
 def check(string):
     return ((not("Open Box" in string)) and (not("Refurbished" in string)))
 
-def init(group, names,something):
+def init(group, names,something,i):
     catID = str(group["CategoryID"])
     nodID = str(group["NodeId"])
     
@@ -68,9 +69,35 @@ def init(group, names,something):
         addstuff["Newegg"] = final["NeweggItemNumber"].encode("ascii","ignore")
         addstuff["Rating"] = final["ReviewSummary"]["Rating"]
         addstuff["numRating"] = final["ReviewSummary"]["TotalReviews"].encode("ascii","ignore")
+        #url5 = "http://www.ows.newegg.com/Products.egg/{item}/Specification".replace("{item}", addstuff["ItemNumber"])
+        #response1 = urllib2.urlopen(url5)
+        #thingy = json.loads(response1.read())
         if (check(addstuff["Title"])):
-            db.names[i].insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff})
-            print(addstuff["Title"])
+             if(i == 0):
+                 specs = utils.getCaseSpecs(addstuff['ItemNumber'])
+                 db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+             if(i == 1):
+                 specs = utils.getCPUSpecs(addstuff['ItemNumber'])
+                 db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+             if(i == 2):
+                 specs = utils.getHDDSpecs(addstuff['ItemNumber'])
+                 db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+             if(i == 3):
+                 specs = utils.getRAMSpecs(addstuff['ItemNumber'])
+                 db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+             if(i == 4):
+                 specs = utils.getMoboSpecs(addstuff['ItemNumber'])
+                 db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+             if(i == 5):
+                 specs = utils.getPSUSpecs(addstuff['ItemNumber'])
+                 db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+             if(i == 6):
+                 specs = utils.getSSDSpecs(addstuff['ItemNumber'])
+                 db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+             if(i == 7):
+                 specs = utils.getGPUSpecs(addstuff['ItemNumber'])
+                 db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+             print(addstuff["Title"])
         count = count + 1
         
 #url = "http://www.ows.newegg.com/Products.egg/{item}/Specification".replace("{item}", addstuff["ItemNumber"])
@@ -113,10 +140,34 @@ def init(group, names,something):
             addstuff["Newegg"] = final["NeweggItemNumber"].encode("ascii","ignore")
             addstuff["Rating"] = final["ReviewSummary"]["Rating"]
             addstuff["numRating"] = final["ReviewSummary"]["TotalReviews"].encode("ascii","ignore")
-            str1 = "Open Box"
-            str2 = "Refurbished"
+            #url5 = "http://www.ows.newegg.com/Products.egg/{item}/Specification".replace("{item}", addstuff["ItemNumber"])
+            #response1 = urllib2.urlopen(url5)
+            #thingy = json.loads(response1.read())
             if (check(addstuff["Title"])):
-                db.names[i].insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff})
+                if(i == 0):
+                    specs = utils.getCaseSpecs(addstuff['ItemNumber'])
+                    db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                if(i == 1):
+                    specs = utils.getCPUSpecs(addstuff['ItemNumber'])
+                    db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                if(i == 2):
+                    specs = utils.getHDDSpecs(addstuff['ItemNumber'])
+                    db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                if(i == 3):
+                    specs = utils.getRAMSpecs(addstuff['ItemNumber'])
+                    db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                if(i == 4):
+                    specs = utils.getMoboSpecs(addstuff['ItemNumber'])
+                    db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                if(i == 5):
+                    specs = utils.getPSUSpecs(addstuff['ItemNumber'])
+                    db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                if(i == 6):
+                    specs = utils.getSSDSpecs(addstuff['ItemNumber'])
+                    db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+                if(i == 7):
+                    specs = utils.getGPUSpecs(addstuff['ItemNumber'])
+                    db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
                 print(addstuff["Title"])
             count = count + 1
                 
@@ -127,4 +178,4 @@ i = 0
 while (i < 8):
     init(group[i], names, 0,i)
     i = i + 1
-init(mobos, "mobos", 1)
+init(mobos, "mobos", 1,4)
