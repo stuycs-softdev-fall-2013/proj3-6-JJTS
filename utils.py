@@ -14,7 +14,6 @@ def getCaseSpecs(itemnum):
     specs = dict()
     expan = dict()
     front = dict()
-    physi = dict()
     data = data["SpecificationGroupList"]
     for x in data[0]["SpecificationPairList"]:
         model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
@@ -24,14 +23,11 @@ def getCaseSpecs(itemnum):
         expan[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
     for x in data[3]["SpecificationPairList"]:
         front[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
-    for x in data[5]["SpecificationPairList"]:
-        physi[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
     results = dict()
     results["Model"] = model
     results["Specifications"] = specs
     results["Expansion"] = expan
     results["Front"] = front
-    results["Physical"] = physi
     return results
 
 def getCPUSpecs(itemnum):

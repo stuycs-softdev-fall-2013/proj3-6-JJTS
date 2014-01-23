@@ -23,7 +23,7 @@ names = ["cases","cpus","hdds","ram","mobos","psus","ssds","gpus"]
 
 
 def check(string):
-    return ((not("Open Box" in string)) and (not("Refurbished" in string)))
+    return ((not("Open Box" in string)) and (not("Refurbished" in string)) and (not("ELEC" in string)) and (not("Laiputuo" in string)))
 
 def init(group, names,something,i):
     catID = str(group["CategoryID"])
