@@ -20,13 +20,14 @@
 		  <li><a href="/my-B">My Builds</a></li>
 		  <li><a href="/build">Builds</a></li>
 		  <li><a href="/about-us">About Us</a></li>
-		  
-		  <li id="search">
-		    <form class="pure-form">
-		      <input type="text" class="pure-input-rounded" placeholder="Search a part.">
-		      <button type="submit" class=" button-search pure-button">Search</button>
-		  </li>
-		
+		    <li id="search">
+		      <form method="POST" class="pure-form">
+			<input type="text" class="pure-input-rounded" placeholder="Search a part.">
+			<button type="submit" class=" button-search pure-button">Search</button>
+		      </form>
+		      
+		    </li>
+		    
 		</ul>
 		{% if not username %}
 		<a href ="/login" style="text-align:right;">Login</a>
