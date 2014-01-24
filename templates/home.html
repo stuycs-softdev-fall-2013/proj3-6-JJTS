@@ -5,6 +5,8 @@
 	<title>ComputerJockey &ndash; Menu</title>
 	<link rel="shortcut icon" href="https://cdn1.iconfinder.com/data/icons/3d-printing-icon-set/32/3d_print.png">
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
+	<link rel="stylesheet" href="../static/button.css">
 	<div id = "menu" class="pure-menu pure-menu-open pure-menu-horizontal pure-menu-selected" "pure-menu-heading">
 		<li><a href="/" class="pure-menu-heading">ComputerJockey</a></li>
 		<ul>
@@ -29,9 +31,27 @@
 </head>
 
 <body>
-  {{ n || safe}}
+  
+<center>
+  <a class= "button-system pure-button" href="/build">
+    <i class="icon-desktop"></i>
+    Build A System
+  </a>
+
+  <p>
+    <font size="5">
+      <b>Or</b>
+    </font>
+  </p>
+
+  <a class= "button-login pure-button" href="/build">
+    <i class="icon-key"></i>
+    Login
+  </a>
+</center>
+
 </body>
-<h1>Hi there</h1>
+
 
 
 
