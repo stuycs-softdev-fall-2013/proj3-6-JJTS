@@ -27,6 +27,11 @@
     background: rgb(28, 184, 65); /* this is a green */
 }
 
+
+.button-search {
+ 	font-size: 90%;   
+}
+
 .button-error {
     background: rgb(202, 60, 60); /* this is a maroon */
 }
