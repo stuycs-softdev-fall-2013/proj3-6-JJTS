@@ -35,21 +35,7 @@ def getCaseSpecs(itemnum):
         results["Error"] = "error"
         return results
 
-<<<<<<< HEAD
-#Database Work=============================================================
-def register(username,password,chkpw):
-    if(users.find({"username":user}).count()) != 0:
-        return False
-    elif(chkpw != password):
-        return False
-    else:
-        db.users.insert({'username':username, 'password' : password})
-        return True
 
-def loginin(user,password):
-
-#End DB Work==============================================================
-=======
 def getCPUSpecs(itemnum):
     url = "http://www.ows.newegg.com/Products.egg/{item}/Specification".replace("{item}", itemnum)
     response = urllib2.urlopen(url)
