@@ -95,7 +95,7 @@ def getRAMSpecs(itemnum):
         for x in data[0]["SpecificationPairList"]:
             model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
         for x in data[1]["SpecificationPairList"]:
-            if (not("ECC" in x["Key"]) and not("Featured" in x["Key"]) and not("Buffered" in x["Key"]):
+            if (not("ECC" in x["Key"]) and not("Featured" in x["Key"]) and not("Buffered" in x["Key"])):
                     specs[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
         results = dict()
         results["Model"] = model
