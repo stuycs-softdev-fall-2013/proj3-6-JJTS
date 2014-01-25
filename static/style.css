@@ -1,1 +1,11 @@
-none so far
+#floater{
+    float:left; 
+    height:50%; 
+    margin-bottom:-120px;
+}
+
+#content{
+    clear:both; 
+    height:240px; 
+    position:relative;
+}

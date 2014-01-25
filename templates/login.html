@@ -1,43 +1,68 @@
+
 <html lang="en">
-<head>
-	<meta charaset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ComputerJockey &ndash; Menu</title>
-	<link rel="shortcut icon" href="https://cdn1.iconfinder.com/data/icons/3d-printing-icon-set/32/3d_print.png">
-	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
-	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
-	<link rel="stylesheet" href="../static/button.css">
-	<div id = "menu" class="pure-menu pure-menu-open pure-menu-horizontal pure-menu-selected" "pure-menu-heading">
-		<li><a href="/" class="pure-menu-heading">ComputerJockey</a></li>
-		<ul>
-		  {% if not username %}
-		  <li><a href="/login">My Profile</a></li>
-		  <li><a href="/my-B">My Builds</a></li>
-		  <li><a href="/build">Builds</a></li>
-		  <li><a href="/about-us">About Us</a></li>
-		  {% else %}
-		  <li><a href="/"+username>My Profile</a></li>
-		  <li><a href="/my-B">My Builds</a></li>
-		  <li><a href="/build">Builds</a></li>
-		  <li><a href="/about-us">About Us</a></li>
-		  
-		  <li id="search">
-		    <form method="POST" class="pure-form">
-		      <input type="text" class="pure-input-rounded" placeholder="Search a part.">
-		      <button type="submit" class=" button-search pure-button">Search</button>
-		  </li>
-		
-		</ul>
-		{% if not username %}
-		<a href ="/login" style="text-align:right;">Login</a>
-		<a href ="/register"> Register</a>
-		{% else %}
-		Welcome {{username}}<a href ="/logout">Not you?</a>
-	</div>
+  <head>
+    <meta charaset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComputerJockey &ndash; Menu</title>
+    <link rel="shortcut icon" href="https://cdn1.iconfinder.com/data/icons/3d-printing-icon-set/32/3d_print.png">
+    <link rel="stylesheet" href="../static/pure-skin-template.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
+    <link rel="stylesheet" href="../static/button.css">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/grids-min.css">
+    <div id = "menu" class="pure-menu pure-menu-open pure-menu-horizontal pure-menu-selected pure-menu-heading pure-skin-template">
+      <li><a href="/" class="pure-menu-heading">ComputerJockey</a></li>
+      <ul>
+	<li><a href="/build">Current Build</a></li>
+	<!--{% if not username %}-->
+	<!--{% else %}-->
+	<li><a href="/saved">Saved Builds</a></li>
+	<!--{% endif %}-->  
+	<li><a href="/buildlist">Build List</a></li>	      
 	
-</head>
+      </ul>
+      
+    </div>
+    
+    <style type="text/css">
+     #main
+     {
+     position:absolute;
+     top:50%;
+     right:0;
+     left:0;
+     }
+     
+     #frm
+     {
+     display: inline-block;
+     vertical-align: middle;
+     line-height: 14px; 
+     }
+    </style>
+
+  </head>
 
 <body>
+ 
+<center>
+  <div id="main">
+   <form id="frm" class="pure-form pure-form-aligned">
+     <fieldset>
+       <div  class="pure-control-group">
+	 <label for="name">Username</label>
+	 <input id="name" type="text" placeholder="Username">
+       </div>
+       <div class="pure-control-group">
+	 <label for="password">Password</label>
+	 <input id="password" type="password" placeholder="Password">
+       </div>
+       <button type="submit" class="pure-button pure-button-primary">Sign in</button>
+     </fieldset>
+   </form>
+  </div>
+</center>
 
-
-</body>
+    
+</body >
