@@ -27,8 +27,12 @@ def check(string):
     list = ["asus", "ddr3", "intel", "crucial", "wd", "western digital", "seagate", "corsair", "gigabyte", "msi",
             "g.skill", "samsung", "ocz", "plextor", "antec", "cooler master", "nzxt", "fractal design", "cougar", "thermaltake",
             "rosewill", "asrock", "radeon r9", "gtx 6", "radeon hd 78", "be quiet", "seasonic"]
-    if ((not("open box" in string)) and (not("refurbished" in string))):
+    if ("open box" in string or "refurbished" in string):
         return False
+    bad = ["ecs", "supermicro", "avatar", "biostar", "five star inc", "foxconn", "jetway", "l337"]
+    for x in bad:
+        if x in string:
+            return False
     for x in list:
         if x in string:
             return True
@@ -38,36 +42,44 @@ def check(string):
 
 def thing(addstuff, i):
     if(i == 0):
+        reviews = utils.getReviews(addstuff['ItemNumber'])
         specs = utils.getCaseSpecs(addstuff['ItemNumber'])
-        db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+        db.cases.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs, 'reviews':reviews})
         
     if(i == 1):
+        reviews = utils.getReviews(addstuff['ItemNumber'])
         specs = utils.getCPUSpecs(addstuff['ItemNumber'])
-        db.cpus.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+        db.cpus.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs, 'reviews':reviews})
         
     if(i == 2):
+        reviews = utils.getReviews(addstuff['ItemNumber'])
         specs = utils.getHDDSpecs(addstuff['ItemNumber'])
-        db.hdds.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+        db.hdds.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs, 'reviews':reviews})
         
     if(i == 3):
+        reviews = utils.getReviews(addstuff['ItemNumber'])
         specs = utils.getRAMSpecs(addstuff['ItemNumber'])
-        db.ram.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+        db.ram.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs, 'reviews':reviews})
 
     if(i == 4):
+        reviews = utils.getReviews(addstuff['ItemNumber'])
         specs = utils.getMoboSpecs(addstuff['ItemNumber'])
-        db.mobos.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+        db.mobos.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs, 'reviews':reviews})
         
     if(i == 5):
+        reviews = utils.getReviews(addstuff['ItemNumber'])
         specs = utils.getPSUSpecs(addstuff['ItemNumber'])
-        db.psus.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+        db.psus.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs, 'reviews':reviews})
             
     if(i == 6):
+        reviews = utils.getReviews(addstuff['ItemNumber'])
         specs = utils.getSSDSpecs(addstuff['ItemNumber'])
-        db.ssds.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+        db.ssds.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs, 'reviews':reviews})
 
     if(i == 7):
+        reviews = utils.getReviews(addstuff['ItemNumber'])
         specs = utils.getGPUSpecs(addstuff['ItemNumber'])
-        db.gpus.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs})
+        db.gpus.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs, 'reviews':reviews})
 
     print(addstuff["Title"])
 
