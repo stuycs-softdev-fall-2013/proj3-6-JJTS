@@ -4,64 +4,100 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>ComputerJockey &ndash; Menu</title>
 	<link rel="shortcut icon" href="https://cdn1.iconfinder.com/data/icons/3d-printing-icon-set/32/3d_print.png">
+	<link rel="stylesheet" href="../static/pure-skin-template.css">
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
 	<link rel="stylesheet" href="../static/button.css">
-	<div id = "menu" class="pure-menu pure-menu-open pure-menu-horizontal pure-menu-selected" "pure-menu-heading">
-		<li><a href="/" class="pure-menu-heading">ComputerJockey</a></li>
-		<ul>
-		  {% if not username %}
-		  <li><a href="/login">My Profile</a></li>
-		  <li><a href="/my-B">My Builds</a></li>
-		  <li><a href="/build">Builds</a></li>
-		  <li><a href="/about-us">About Us</a></li>
-		  {% else %}
-		  <li><a href="/"+username>My Profile</a></li>
-		  <li><a href="/my-B">My Builds</a></li>
-		  <li><a href="/build">Builds</a></li>
-		  <li><a href="/about-us">About Us</a></li>
-		    <li id="search">
-		      <form method="POST" class="pure-form">
-			<input type="text" class="pure-input-rounded" placeholder="Search a part.">
-			<button type="submit" class=" button-search pure-button">Search</button>
-		      </form>
-		      
-		    </li>
-		    
-		</ul>
-		{% if not username %}
-		<a href ="/login" style="text-align:right;">Login</a>
-		<a href ="/register"> Register</a>
-		{% else %}
-		Welcome {{username}}<a href ="/logout">Not you?</a>
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/grids-min.css">
+	<div id = "menu" class="pure-menu pure-menu-open pure-menu-horizontal pure-menu-selected pure-menu-heading pure-skin-template">
+	  <li><a href="/" class="pure-menu-heading">ComputerJockey</a></li>
+	  <ul>
+	    <li><a href="/build">Current Build</a></li>
+	    <!--{% if not username %}-->
+	    <!--{% else %}-->
+	    <li><a href="/saved">Saved Builds</a></li>
+	    <!--{% endif %}-->  
+	    <li><a href="/buildlist">Build List</a></li>	      
+	    </li>
+	    
+	  </ul>
+
 	</div>
-	
+
+<style>
+  tr:hover
+  {
+  background-color:#202020;
+  }
+</style>
+
 </head>
 
 <body>
   
-<center>
-  <a class= "button-system pure-button" href="/build">
-    <i class="icon-desktop"></i>
-    Build A System
-  </a>
+<left>
+<table class="pure-table" style="text-align:center">
+  <tbody bgcolor="#000001">
+    <tr>
+      <td><a href="/" style="text-decoration:none"><font color="#ffffff">Graphics Card</font></a></td>
+    </tr>
+    <tr>
+      <td><a href="/cpu" style="text-decoration:none"><font color="#ffffff">Computer Processor</font></a></td>
+    </tr>
+    <tr>
+     <td><a href="/mobo" style="text-decoration:none"><font color="#ffffff">Motherboard</font></a></td>
+    </tr>
+    <tr>
+      <td><a href="/psu" style="text-decoration:none"><font color="#ffffff">Power Supply Unit</font></a></td>
+    </tr>
+    <tr>
+      <td><a href="/hdd" style="text-decoration:none"><font color="#ffffff">Hard Drive</font></a></td>
+    </tr>
+    <tr>
+      <td><a href="/ram" style="text-decoration:none"><font color="#ffffff">RAM</font></a></td>
+    </tr>
+    <tr>
+      <td><a href="/ssd" style="text-decoration:none"><font color="#ffffff">SSD</font></a></td>
+    </tr>
+    <tr>
+      <td><a href="/case" style="text-decoration:none"><font color="#ffffff">Tower</font></a></td>
+    </tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>    
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+    <td><a href="/about" style="text-decoration:none"><font color="#ffffff">About Us</font></a></td>
+  </tbody>
 
-  <p>
-    <font size="5">
-      <b>Or</b>
-    </font>
-  </p>
-
-  <a class= "button-login pure-button" href="/login">
-    <i class="icon-key"></i>
-    Login
-  </a>
-</center>
+</left>
 
 </body>
-
-
-
 
 
 
