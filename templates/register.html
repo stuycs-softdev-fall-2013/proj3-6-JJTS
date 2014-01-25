@@ -29,7 +29,7 @@
      #main
      {
      position:absolute;
-     top:50%;
+     top:40%;
      right:0;
      left:0;
      }
@@ -45,24 +45,20 @@
   </head>
 
 <body>
- 
-<center>
-  <div id="main">
-   <form id="frm" class="pure-form pure-form-aligned" method="POST">
-     <fieldset>
-       <div  class="pure-control-group">
-	 <label for="name">Username</label>
-	 <input id="name" type="text" placeholder="Username">
-       </div>
-       <div class="pure-control-group">
-	 <label for="password">Password</label>
-	 <input id="password" type="password" placeholder="Password">
-       </div>
-       <button type="submit" class="pure-button pure-button-primary">Sign in</button>
-     </fieldset>
-   </form>
-  </div>
-</center>
+  <center>
+    <div id="main">
+      <form id="frm" class="pure-form" method="POST">
+	<fieldset class="pure-group">
+	  <input id="name" type="text" class="pure-input-1" placeholder="Username">
+	  <input id="pass" type="password" class="pure-input-1" placeholder="Password">
+	  <input id="confirmpass" type="password" class="pure-input-1" placeholder="Confirm Password">
+	  <input id="email" type="email" class="pure-input-1" placeholder="Email">
+	</fieldset>
 
-    
-</body >
+	<button type="submit" class="pure-button pure-input-1 pure-button-primary">Sign Up</button
+
+      </form>
+    </div>
+  </center>
+
+</body>
