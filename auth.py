@@ -6,7 +6,7 @@ db = client.db
 
 
 def register(username,password,chkpw,email):
-    if(users.find({"username":user}).count()) != 0:
+    if(db.users.find({"username":user}).count()) != 0:
         return "There is a account with that username"
     elif(chkpw != password):
         return "Password aren't the same"
@@ -18,9 +18,27 @@ def register(username,password,chkpw,email):
 
 def login(user,password):
     check=db.find_one({'username':user,'password':password}, fields={'_id':False})
-    if(users.find({"username":user}).count()) != 0:
+    if(db.users.find({"username":user}).count()) != 0:
         return "No account with that username"
     elif check == None:
         return "Password doesn't match username"
     else:
         return True
+
+def checkBuiildName(username,name):
+    data = db.users.find_one({'username':username})
+    for x in data['build']:
+        if x == name:
+            return False
+    return True
+
+def addBuild(username,name,cpu,gpu,mobo,psu,hdd,ram,ssd,tower):
+    data = db.users.find_one({'username':username})
+    #Session code go here
+    if 2 == 3:
+        return "Add stuff here"
+    #Add accounts
+    elif checkBuildName(username,name):
+        data.update({'build': name}, {'$set'{'cpu':cpu, 'gpu':gpu, 'mobo':mobo, 'psu':psu, 'hdd':hdd, 'ram':ram, 'ssd':ssd, 'case':tower}})
+    else:
+        data.insert({'build':name,'cpu':cpu, 'gpu':gpu, 'mobo':mobo, 'psu':psu, 'hdd':hdd, 'ram':ram, 'ssd':ssd, 'case':tower})
