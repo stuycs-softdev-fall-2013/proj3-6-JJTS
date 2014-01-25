@@ -1,10 +1,26 @@
-def register(username,password,chkpw):
+from pymongo import MongoClient
+from flask import session
+
+client = MongoClient()
+db = client.db
+
+
+def register(username,password,chkpw,email):
     if(users.find({"username":user}).count()) != 0:
-        return False
+        return "There is a account with that username"
     elif(chkpw != password):
-        return False
+        return "Password aren't the same"
+    elif(users.find({"email":email}).count()) != 0:
+        return "There is an account with that email"
     else:
-        db.users.insert({'username':username, 'password' : password})
+        db.users.insert({'username':username, 'password' : password, 'email' : email})
         return True
 
 def login(user,password):
+    check=db.find_one({'username':user,'password':password}, fields={'_id':False})
+    if(users.find({"username":user}).count()) != 0:
+        return "No account with that username"
+    elif check == None:
+        return "Password doesn't match username"
+    else:
+        return True
