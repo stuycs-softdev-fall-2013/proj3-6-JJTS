@@ -35,6 +35,7 @@ def getCaseSpecs(itemnum):
         results["Error"] = "error"
         return results
 
+
 def getCPUSpecs(itemnum):
     url = "http://www.ows.newegg.com/Products.egg/{item}/Specification".replace("{item}", itemnum)
     response = urllib2.urlopen(url)
@@ -221,3 +222,4 @@ def getGPUSpecs(itemnum):
         results = dict()
         results["Error"] = "error"
         return results
+>>>>>>> master
