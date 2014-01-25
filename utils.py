@@ -17,13 +17,13 @@ def getCaseSpecs(itemnum):
     data = data["SpecificationGroupList"]
     try:
         for x in data[0]["SpecificationPairList"]:
-            model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            model[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[1]["SpecificationPairList"]:
-            specs[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            specs[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[2]["SpecificationPairList"]:
-            expan[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            expan[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[3]["SpecificationPairList"]:
-            front[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            front[x["Key"].replace(".", " ")] = x["Value"]
         results = dict()
         results["Model"] = model
         results["Specifications"] = specs
@@ -46,11 +46,11 @@ def getCPUSpecs(itemnum):
     data = data["SpecificationGroupList"]
     try:
         for x in data[0]["SpecificationPairList"]:
-            model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            model[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[1]["SpecificationPairList"]:
-            socke[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            socke[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[2]["SpecificationPairList"]:
-            specs[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            specs[x["Key"].replace(".", " ")] = x["Value"]
         results = dict()
         results["Model"] = model
         results["Socket"] = socke
@@ -71,11 +71,11 @@ def getHDDSpecs(itemnum):
     data = data["SpecificationGroupList"]
     try:
         for x in data[0]["SpecificationPairList"]:
-            model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            model[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[1]["SpecificationPairList"]:
-            perfo[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            perfo[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[2]["SpecificationPairList"]:
-            physi[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            physi[x["Key"].replace(".", " ")] = x["Value"]
         results = dict()
         results["Model"] = model
         results["Performance"] = perfo
@@ -94,7 +94,7 @@ def getRAMSpecs(itemnum):
     specs = dict()
     try:
         for x in data[0]["SpecificationPairList"]:
-            model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            model[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[1]["SpecificationPairList"]:
             if (not("ECC" in x["Key"]) and not("Featured" in x["Key"]) and not("Buffered" in x["Key"])):
                     specs[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
@@ -121,19 +121,19 @@ def getMoboSpecs(itemnum):
     data = data["SpecificationGroupList"]
     try:
         for x in data[0]["SpecificationPairList"]:
-            model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            model[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[1]["SpecificationPairList"]:
-            cpu[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            cpu[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[3]["SpecificationPairList"]:
-            ram[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            ram[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[5]["SpecificationPairList"]:
-            stora[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            stora[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[8]["SpecificationPairList"]:
-            lan[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            lan[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[9]["SpecificationPairList"]:
-            rearp[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            rearp[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[11]["SpecificationPairList"]:
-            physi[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            physi[x["Key"].replace(".", " ")] = x["Value"]
         results = dict()
         results["Model"] = model
         results["CPU"] = cpu
@@ -157,9 +157,9 @@ def getPSUSpecs(itemnum):
     data = data["SpecificationGroupList"]
     try:
         for x in data[0]["SpecificationPairList"]:
-            model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            model[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[1]["SpecificationPairList"]:
-            specs[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            specs[x["Key"].replace(".", " ")] = x["Value"]
         results = dict()
         results["Model"] = model
         results["Specifications"] = specs
@@ -179,11 +179,11 @@ def getSSDSpecs(itemnum):
     data = data["SpecificationGroupList"]
     try:
         for x in data[0]["SpecificationPairList"]:
-            model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            model[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[1]["SpecificationPairList"]:
-            physi[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            physi[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[2]["SpecificationPairList"]:
-            perfo[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            perfo[x["Key"].replace(".", " ")] = x["Value"]
         results = dict()
         results["Model"] = model
         results["Physical"] = physi
@@ -205,13 +205,13 @@ def getGPUSpecs(itemnum):
     data = data["SpecificationGroupList"]
     try:
         for x in data[0]["SpecificationPairList"]:
-            model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            model[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[2]["SpecificationPairList"]:
-            chips[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            chips[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[3]["SpecificationPairList"]:
-            memor[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            memor[x["Key"].replace(".", " ")] = x["Value"]
         for x in data[5]["SpecificationPairList"]:
-            ports[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+            ports[x["Key"].replace(".", " ")] = x["Value"]
         results = dict()
         results["Model"] = model
         results["Chipset"] = chips
