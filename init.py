@@ -23,7 +23,18 @@ names = ["cases","cpus","hdds","ram","mobos","psus","ssds","gpus"]
 
 
 def check(string):
-    return ((not("Open Box" in string)) and (not("Refurbished" in string)) and (not("ELEC" in string)) and (not("Laiputuo" in string)))
+    string = string.lower()
+    list = ["asus", "ddr3", "intel", "crucial", "wd", "western digital", "seagate", "corsair", "gigabyte", "msi",
+            "g.skill", "samsung", "ocz", "plextor", "antec", "cooler master", "nzxt", "fractal design", "cougar", "thermaltake",
+            "rosewill", "asrock", "radeon r9", "gtx 6", "radeon hd 78", "be quiet", "seasonic"]
+    if ((not("open box" in string)) and (not("refurbished" in string))):
+        return False
+    for x in list:
+        if x in string:
+            return True
+    return False
+    
+    #more exceptions
 
 def thing(addstuff, i):
     if(i == 0):
