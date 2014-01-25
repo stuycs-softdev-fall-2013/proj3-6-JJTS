@@ -169,7 +169,7 @@ def getPSUSpecs(itemnum):
         results["Error"] = "error"
         return results
 
-def getSDDSpecs(itemnum):
+def getSSDSpecs(itemnum):
     url = "http://www.ows.newegg.com/Products.egg/{item}/Specification".replace("{item}", itemnum)
     response = urllib2.urlopen(url)
     data = json.loads(response.read())
@@ -222,4 +222,13 @@ def getGPUSpecs(itemnum):
         results = dict()
         results["Error"] = "error"
         return results
->>>>>>> master
+
+def getReviews(itemnum):
+    url = "http://www.ows.newegg.com/Products.egg/{item}/Reviews".replace("{item}", itemnum)
+    response = urllib2.urlopen(url)
+    data = json.loads(response.read())
+    reviews = dict()
+    reviews["Rating"] = data["Summary"]["Rating"]
+    reviews["Total"] = data["Summary"]["TotalReviews"].encode("ascii", "ignore")
+    return reviews
+
