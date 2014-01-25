@@ -35,6 +35,7 @@ def getCaseSpecs(itemnum):
         results["Error"] = "error"
         return results
 
+
 def getCPUSpecs(itemnum):
     url = "http://www.ows.newegg.com/Products.egg/{item}/Specification".replace("{item}", itemnum)
     response = urllib2.urlopen(url)
@@ -79,6 +80,27 @@ def getHDDSpecs(itemnum):
         results["Model"] = model
         results["Performance"] = perfo
         results["Physical"] = physi
+        return results
+    except:
+        results = dict()
+        results["Error"] = "error"
+        return results
+
+def getRAMSpecs(itemnum):
+    url = "http://www.ows.newegg.com/Products.egg/{item}/Specification".replace("{item}", itemnum)
+    response = urllib2.urlopen(url)
+    data = json.loads(response.read())
+    model = dict()
+    specs = dict()
+    try:
+        for x in data[0]["SpecificationPairList"]:
+            model[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        for x in data[1]["SpecificationPairList"]:
+            if (not("ECC" in x["Key"]) and not("Featured" in x["Key"]) and not("Buffered" in x["Key"])):
+                    specs[x["Key"].replace(".", " ")] = x["Value"].replace(".", " ")
+        results = dict()
+        results["Model"] = model
+        results["Specification"] = specs
         return results
     except:
         results = dict()
@@ -200,3 +222,4 @@ def getGPUSpecs(itemnum):
         results = dict()
         results["Error"] = "error"
         return results
+>>>>>>> master
