@@ -81,6 +81,8 @@ def thing(addstuff, i):
         specs = utils.getGPUSpecs(addstuff['ItemNumber'])
         db.gpus.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs, 'reviews':reviews})
 
+    db.parts.insert({'itemnumber':addstuff['ItemNumber'], 'stuff':addstuff, 'specs':specs, 'reviews':reviews})
+
     print(addstuff["Title"])
 
 def init(group, names,something,thingy):
