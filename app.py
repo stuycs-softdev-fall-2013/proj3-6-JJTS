@@ -45,7 +45,7 @@ def register():
 
 @app.route('/parts/<itemnum>')
 def parts(itemnum):
-    result = db.ram.find_one({'itemnumber':itemnum})
+    result = db.parts.find_one({'itemnumber':itemnum})
     if 'username' in session:
         return render_template('parts.html', username = session['username'], result=result)
     else:
@@ -77,10 +77,28 @@ def addpart(itemnum):
 
 @app.route('/build')
 def build():
+    results = dict()
+    for x in session:
+        if x == 'cpu':
+            results['cpu'] = db.cpus.find_one({'itemnumber':session[x]})
+        if x == 'case':
+            results['case'] = db.cpus.find_one({'itemnumber':session[x]})
+        if x =='gpu':
+            results['gpu'] = db.cpus.find_one({'itemnumber':session[x]})
+        if x == 'psu':
+            results['psu'] = db.cpus.find_one({'itemnumber':session[x]})
+        if x =='hdd':
+            results['hdd'] = db.cpus.find_one({'itemnumber':session[x]})
+        if x == 'ssd':
+            results['ssd'] = db.cpus.find_one({'itemnumber':session[x]})
+        if x =='ram':
+            results['ram'] = db.cpus.find_one({'itemnumber':session[x]})
+        if x == 'mobo':
+            results['mobo'] = db.cpus.find_one({'itemnumber':session[x]})
     if 'username' in session:
-        return redirect_template('build.html', username = session['username'], session=session)
+        return redirect_template('build.html', username = session['username'], results=results)
     else:
-        return redirect_template('build.html', session = session)
+        return redirect_template('build.html', results=results)
 
 @app.route('/remove/<part>')
 def remove(part):
@@ -92,7 +110,7 @@ def remove(part):
 
 @app.route('/logout')
 def logout():
-    session.pop(username, None)
+    session.pop('username', None)
     return redirect_template('home.html')
 
 @app.route('/cpu')
