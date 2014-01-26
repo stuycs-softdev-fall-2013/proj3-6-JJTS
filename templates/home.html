@@ -6,23 +6,36 @@
 	<title>ComputerJockey &ndash; Menu</title>
 	<link rel="shortcut icon" href="https://cdn1.iconfinder.com/data/icons/3d-printing-icon-set/32/3d_print.png">
 	<link rel="stylesheet" href="../static/pure-skin-template.css">
-	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+	<link rel="stylesheet" href="../static/pure-min.css">
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
 	<link rel="stylesheet" href="../static/button.css">
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/grids-min.css">
 	<div id = "menu" class="pure-menu pure-menu-open pure-menu-horizontal pure-menu-selected pure-menu-heading pure-skin-template">
 	  <li><a href="/" class="pure-menu-heading">ComputerJockey</a></li>
 	  <ul>
-	    <li><a href="/gpu">Graphics Card</a></li>
-	    <!--{% if not username %}-->
-	    <!--{% else %}-->
-	    <li><a href="/cpu">Computer Processors</a></li>
-	    <!--{% endif %}-->  
-	    <li><a href="/mobo">Motherboard</a></li>
-	    <li><a href="/hdd">Hard Drive</a></li>
-	    <li><a href="/ssd">SSD</a></li>
-	    <li><a href="/ram">RAM</a></li>
-	    <li><a href="/tower">Cases</a></li>
+	    <li>
+	      <a href="/gpu">Graphics Card</a>
+	    </li>
+	    <li>
+	      <a href="/cpu">Computer Processors</a>
+	    </li>
+	    <li>
+	      <a href="/mobo">Motherboard</a>
+	    </li>
+	    <li>
+	      <a href="/hdd">Hard Drive</a>
+	    </li>
+	    <li>
+	      <a href="/ssd">SSD</a>
+	    </li>
+	    <li>
+	      <a href="/ram">RAM</a>
+	    </li>
+	    <li>
+	      <a href="/tower">Cases</a>
+	    </li>
+	    <li>
+	      <a href="/build">Build a System</a>
 	    </li>
 	    
 	  </ul>
@@ -51,7 +64,12 @@
   <left>
 
     <div class="pure-g">
-      <div class="pure-u-1-5 side-menu">
+      <div class="pure-u-1-5">
+	<p>
+	  <a href="/login">Login here!</a> or 
+	  <a href="/login">Register here!</a>
+	</p>
+	<!--
 	  <center>
             <p class="select"><a href="/gpu" style="text-decoration:none"><font color="#ffffff">Graphics Card</font></a></p>
 	    <p class="select"><a href="/cpu" style="text-decoration:none"><font color="#ffffff">Computer Processor</font></a></p>
@@ -77,83 +95,118 @@
 	    <br>
 	    <br>
 	    <p class="select"><a href="/about" style="text-decoration:none"><font color="#ffffff">About us</font></a></p>
+
           </center>
-      </div>
+-->   
+   </div>
 
       <div class="pure-u-1-12">
       </div>
       
-      
+       <div class="pure-u-1-5">
+	<br>
+	<br>
+        <table class="pure-table">
+	  <tbody>
+	    <tr>
+	      <td>Example Build Image</td>
+	    </tr>
+	    <tr>
+	      <td><img src="path" width=150 height=200></td>
+	    </tr>
+	    <tr>
+	      <td></td> 
+	    </tr>
+	    <tr>
+	      <td></td> 
+	    </tr>
+	 
+	     
+	    <!-- Build 2-->
+	    <tr>
+	      <td>Example Build 2 Image </td> 
+	    </tr>
+	    <tr>
+	      <td><img src="path2" width=150 height=200></td>
+	    </tr>
+	    <tr>
+	      <td></td> 
+	    </tr>
+	    <tr>
+	      <td></td> 
+	    </tr>
+	    <tr>
+	      <td></td> 
+	    </tr>
+	    <tr>
+	      <td></td> 
+	    </tr>
+	    <tr>
+	      <td></td> 
+	    </tr>
+	    <tr>
+	      <td></td> 
+	    </tr>
+	  </tbody>
+	</table>
+      </div>
+
       <div class="pure-u-2-5">
-            <table class="pure-table pure-table-horizontal">
-	      <tbody>
-		<tr>
-		  <td>Example Build Image</td> 
-		  <td>Build Name</td>
-		</tr>
-		<tr>
-		  <td></td> 
-		  <td>GPU</td>
-		</tr>
-		<tr>
-		  <td></td> 
-		  <td>CPU</td>
-		</tr>
-		<tr>
-		  <td></td> 
-		  <td>Mobo</td>
-		</tr>
-		<tr>
-		  <td></td> 
-		  <td>HDD</td>
-		</tr>
-		<tr>
-		  <td></td> 
-		  <td>SSD</td>
-		</tr>
-		<tr>
-		  <td></td> 
-		  <td>RAM</td>
-		</tr>
-		<tr>
-		  <td></td> 
-		  <td>Tower</td>
-		</tr>
-<!-- Build 2-->
-		<tr>
-		  <td>Example Build 2 Image </td> 
-		  <td>Build Name</td>
-		</tr>
-		<tr>
-		  <td></td> 
-		  <td>GPU</td>
-		</tr>
-		<tr>
-		  <td></td> 
-		  <td>CPU</td>
-		</tr>
-		<tr>
-		  <td></td> 
-		  <td>Mobo</td>
-		</tr>
-		<tr>
-		  <td></td> 
-		  <td>HDD</td>
-		</tr>
-		<tr>
-		  <td></td> 
-		  <td>SSD</td>
-		</tr>
-		<tr>
-		  <td></td> 
-		  <td>RAM</td>
-		</tr>
-		<tr>
-		  <td></td> 
-		  <td>Tower</td>
-		</tr>
-	      </tbody>
-	    </table>
+	<br>
+	<br>
+        <table class="pure-table pure-table-horizontal">
+	  <tbody>
+	    <tr>
+	      <td>Build Name</td>
+	    </tr>
+	    <tr>
+	      <td>GPU</td>
+	    </tr>
+	    <tr>
+	      <td>CPU</td>
+	    </tr>
+	    <tr>
+	      <td>Mobo</td>
+	    </tr>
+	    <tr>
+	      <td>HDD</td>
+	    </tr>
+	    <tr>
+	      <td>SSD</td>
+	    </tr>
+	    <tr>
+	      <td>RAM</td>
+	    </tr>
+	    <tr>
+	      <td>Tower</td>
+	    </tr>
+	    <!-- Build 2-->
+	    <tr>
+	      <td>Build Name</td>
+	    </tr>
+	    <tr>
+	      <td>GPU</td>
+	    </tr>
+	    <tr>
+	      <td>CPU</td>
+	    </tr>
+	    <tr>
+	      <td>Mobo</td>
+	    </tr>
+	    <tr>
+	      <td>HDD</td>
+	    </tr>
+	    <tr>
+	      <td>SSD</td>
+	    </tr>
+	    <tr>
+	      <td>RAM</td>
+	    </tr>
+	    <tr>
+	      <td>Tower</td>
+	    </tr>
+	  </tbody>
+	</table>
       </div>
       
       <div class="pure-u-1-5">
