@@ -5,19 +5,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>ComputerJockey &ndash; Menu</title>
 	<link rel="shortcut icon" href="https://cdn1.iconfinder.com/data/icons/3d-printing-icon-set/32/3d_print.png">
+	<link rel="stylesheet" href="../static/zurb/css/foundation.min.css">
 	<link rel="stylesheet" href="../static/pure-skin-template.css">
 	<link rel="stylesheet" href="../static/pure-min.css">
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
 	<link rel="stylesheet" href="../static/button.css">
 	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/grids-min.css">
+	<!-- Broken Pure Code
 	<div id = "menu" class="pure-menu pure-menu-open pure-menu-horizontal pure-menu-selected pure-menu-heading pure-skin-template">
 	  <li><a href="/" class="pure-menu-heading">ComputerJockey</a></li>
 	  <ul>
 	    <li>
-	      <a href="/gpu">Graphics Card</a>
+	      <a href="/gpu">Video Card</a>
 	    </li>
 	    <li>
-	      <a href="/cpu">Computer Processors</a>
+	      <a href="/cpu">Computer Processor</a>
 	    </li>
 	    <li>
 	      <a href="/mobo">Motherboard</a>
@@ -32,42 +34,77 @@
 	      <a href="/ram">RAM</a>
 	    </li>
 	    <li>
-	      <a href="/tower">Cases</a>
+	      <a href="/ram">Power Supply</a>
 	    </li>
 	    <li>
-	      <a href="/build">Build a System</a>
+	      <a href="/tower">Cases</a>
 	    </li>
 	    
 	  </ul>
 
 	</div>
-
-<style>
-  
-  .side-menu{
-  background : #000;
-  }
-  
-  .select:hover{
-  background-color:#202020;
-  }
-
-  .build-box{
-  padding: 1em;
-  }
-  
-</style>
-
+-->
+	<nav class="top-bar" data-topbar>
+	  <ul class="title-area">
+	    <li class="name">
+	      <h1><a href="#">ComputerJockey</a></h1>
+	    </li>
+	    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+	  </ul>
+	  
+	  <section class="top-bar-section">
+	    <!-- Right Nav Section -->
+	    <ul class="right">
+	      <li class="active"><a href="#">Graphics Card</a></li>
+	      <li class="active"><a href="#">Computer Processor</a></li>
+	      <li class="active"><a href="#">Motherboard</a></li>
+	      <li class="active"><a href="#">Hard Drive</a></li>
+	      <li class="active"><a href="#">SSD</a></li>
+	      <li class="active"><a href="#">RAM</a></li>
+	      <li class="active"><a href="#">Cases</a></li>
+	    </ul>
+	    
+	    <!-- Left Nav Section -->
+	    <ul class="left">
+	    </ul>
+	  </section>
+	</nav>
+	
+	<style>
+	  
+	  .side-menu{
+	  background : #000;
+	  }
+	  
+	  .select:hover{
+	  background-color:#202020;
+	  }
+	  
+	  .build-box{
+	  padding: 1em;
+	  }
+	  
+	</style>
+	
 </head>
 
 <body>  
   <left>
 
-    <div class="pure-g">
+    <div class="pure-g-r">
       <div class="pure-u-1-5">
 	<p>
 	  <a href="/login">Login here!</a> or 
 	  <a href="/login">Register here!</a>
+	  {{Input Jinja Here}}
+	</p>
+	<p>
+	  <center>
+	    <button class="pure-button button-login">
+	      <i class="icon-desktop"></i>
+	      Start Building!
+	    </button>
+	  </center>
 	</p>
 	<!--
 	  <center>
@@ -109,7 +146,7 @@
         <table class="pure-table">
 	  <tbody>
 	    <tr>
-	      <td>Example Build Image</td>
+	      <td>{{Build Name}}</td>
 	    </tr>
 	    <tr>
 	      <td><img src="path" width=150 height=200></td>
@@ -120,11 +157,22 @@
 	    <tr>
 	      <td></td> 
 	    </tr>
-	 
-	     
+	   <tr>
+	      <td></td> 
+	    </tr>
+	   <tr>
+	      <td></td> 
+	    </tr>
+	   <tr>
+	      <td></td> 
+	    </tr>	 
+	    <tr>
+	      <td></td> 
+	    </tr>
+	    
 	    <!-- Build 2-->
 	    <tr>
-	      <td>Example Build 2 Image </td> 
+	      <td>{{Build Name 2}} </td> 
 	    </tr>
 	    <tr>
 	      <td><img src="path2" width=150 height=200></td>
@@ -141,12 +189,7 @@
 	    <tr>
 	      <td></td> 
 	    </tr>
-	    <tr>
-	      <td></td> 
-	    </tr>
-	    <tr>
-	      <td></td> 
-	    </tr>
+
 	  </tbody>
 	</table>
       </div>
@@ -154,10 +197,11 @@
       <div class="pure-u-2-5">
 	<br>
 	<br>
+	<left>
         <table class="pure-table pure-table-horizontal">
 	  <tbody>
 	    <tr>
-	      <td>Build Name</td>
+	      <td>Specs of {{Build Name}}</td>
 	    </tr>
 	    <tr>
 	      <td>GPU</td>
@@ -182,7 +226,10 @@
 	    </tr>
 	    <!-- Build 2-->
 	    <tr>
-	      <td>Build Name</td>
+	      <td></td>
+	    </tr>
+	    <tr>
+	      <td>Specs of {{Build Name 2}}</td>
 	    </tr>
 	    <tr>
 	      <td>GPU</td>
@@ -207,17 +254,9 @@
 	    </tr>
 	  </tbody>
 	</table>
+	</left>
       </div>
-      
-      <div class="pure-u-1-5">
-	<div class="l-box">
-	  <center>
-            <p><font color="#ffffff">More stuff</font></p>
-          </center>
-	</div>
-      </div>
-     
-
+   
     </div>
   </left>
 </body>
