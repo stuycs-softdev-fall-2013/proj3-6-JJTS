@@ -2,7 +2,7 @@ from pymongo import MongoClient
 from flask import session
 
 client = MongoClient()
-db = client.db
+db = client.pcparts
 
 
 def register(username,password,chkpw,email):
@@ -14,7 +14,7 @@ def register(username,password,chkpw,email):
         return "There is an account with that email"
     else:
         db.users.insert({'username':username, 'password' : password, 'email' : email})
-        return True
+        return 'True'
 
 def login(user,password):
     check=db.find_one({'username':user,'password':password}, fields={'_id':False})
@@ -23,7 +23,7 @@ def login(user,password):
     elif check == None:
         return "Password doesn't match username"
     else:
-        return True
+        return 'True'
 
 def checkBuiildName(username,name):
     data = db.users.find_one({'username':username})
