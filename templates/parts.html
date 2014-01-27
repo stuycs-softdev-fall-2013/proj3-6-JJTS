@@ -30,12 +30,6 @@
     </style>
     <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
-
-    <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="../assets/ico/favicon.png">
   </head>
 
@@ -91,24 +85,60 @@
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
-	  
-          <div class="row-fluid">
-            <div class="span12">
-              <h2>Featured Build #1</h2>
-              <p>{{ results["specs"]["Performance"] }}</p>
-              <p><a class="btn" href="#">asfdasf &raquo;</a></p>
-            </div><!--/span-->
-          </div><!--/row-->
-          <div class="row-fluid">
-            <div class="span12">
-              <h2>Featured Build #2</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-          </div><!--/row-->
-        </div><!--/span-->
-      </div><!--/row-->
+	  {% for x in results %}
+	  {% if x == "specs" %}
 
+	  {% for y in results["specs"] %}
+	  <table class="table table-hover">
+            <thead>
+              <tr>
+                <th><h1>{{ y }}</h1></th>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+	      {% for z in results[x][y] %}
+	      
+              <tr>
+                <th>{{ z }}</th>
+                <td>{{ results[x][y][z] }}</td>
+              </tr>
+	      {% endfor %}
+	      
+            </tbody>
+	  </table>
+	  {% endfor %}
+	  {% endif %}
+	  
+	  {% if x == "reviews" %}
+	  <table class="table table-hover">
+	    <thead>
+	      <tr>
+		<th><h1>Reviews</h1> <h4>(out of 5)</h4></th>
+		<td></td>
+	      </tr>
+	    </thead>
+
+	    <tbody>
+              {% for y in results[x] %}
+
+              <tr>
+                <th>{{ y }}</th>
+                <td>{{ results[x][y] }}</td>
+              </tr>
+              {% endfor %}
+
+            </tbody>
+	  </table>
+	  {% endif %}
+	  
+	  {% endfor %}
+	  
+	  <h2><font color="red"><strike>Original Price: {{ results["stuff"]["oPrice"] }}</strike></font></h2>
+	  <h2><font color="green">Final Price: {{ results["stuff"]["fPrice"] }}</font></h2>
+	  <a href="/add/{{ results['itemnumber'] }}" class="btn btn-default btn-xs" role="button">Add to Build</a>
+
+	</div>
       <hr>
 
       <footer>
