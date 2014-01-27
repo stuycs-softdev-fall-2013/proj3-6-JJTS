@@ -17,7 +17,7 @@ def register(username,password,chkpw,email):
         return 'True'
 
 def login(user,password):
-    check=db.find_one({'username':user,'password':password}, fields={'_id':False})
+    check=db.users.find_one({'username':user,'password':password}, fields={'_id':False})
     if(db.users.find({"username":user}).count()) != 0:
         return "No account with that username"
     elif check == None:
