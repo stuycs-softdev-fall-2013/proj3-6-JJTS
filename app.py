@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, redirect, request, session
 from pymongo import MongoClient
-import utils,auth
+import utils,auth,gimages
 
 client = MongoClient()
 db = client.pcparts
@@ -57,10 +57,12 @@ def register():
 @app.route('/parts/<itemnum>')
 def parts(itemnum):
     results = db.parts.find_one({'itemnumber':itemnum})
+    name = results["stuff"]["Title"]
+    url = gimages.gimages(name)
     if 'username' in session:
-        return render_template('parts.html', username = session['username'], results=results)
+        return render_template('parts.html', username = session['username'], results=results, url = url)
     else:
-        return render_template('parts.html', results=results)
+        return render_template('parts.html', results=results, url = url)
 
 @app.route('/add/<itemnum>')
 def add(itemnum):
