@@ -38,14 +38,7 @@
     <link rel="shortcut icon" href="../assets/ico/favicon.png">
   
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
-   
-    <script>
-      $( document ).ready(function() {
-      $( "button" ).click(function( event ) {
-      alert( "Thanks for visiting!" );
-      });
-      });
-    </script>
+
   </head>
 
   <body>
@@ -97,7 +90,7 @@
               <li><a href="/psu">Power Supplies</a></li>
               <li><a href="/case">Cases</a></li>
             </ul>
-            <ul class="nav nav-list">
+            <ul id="filters" class="nav nav-list">
               <li class="nav-header">Manafacuter</li>
 	      <li>&nbsp;&nbsp;&nbsp;<input type="checkbox" name="brands[]" value="Intel" id="id0001"/><font size="4">Intel</font></li>
 	      <li>&nbsp;&nbsp;&nbsp;<input type="checkbox" name="brands[]" value="AMD" id="id0002"/><font size="4">AMD</font></li>
@@ -142,4 +135,16 @@
     
 
   </body>
+
+
+   
+    <script>
+      $("#filters:checkbox" ).click(function() {
+      $( "#brand:td" ).hide(); 
+      $("#filters :checkbox:checked").each(function(){
+      $("."+$(this).val()).show();
+      });
+      });
+    </script>
+
 </html>

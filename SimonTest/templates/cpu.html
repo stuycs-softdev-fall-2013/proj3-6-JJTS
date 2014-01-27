@@ -90,14 +90,14 @@
               <li><a href="/psu">Power Supplies</a></li>
               <li><a href="/case">Cases</a></li>
             </ul>
-            <ul class="nav nav-list">
+            <ul id="filters" class="nav nav-list">
               <li class="nav-header">Manafacuter</li>
 	      <li>&nbsp;&nbsp;&nbsp;<input type="checkbox" name="brands[]" value="Intel" id="id0001"/><font size="4">Intel</font></li>
 	      <li>&nbsp;&nbsp;&nbsp;<input type="checkbox" name="brands[]" value="AMD" id="id0002"/><font size="4">AMD</font></li>
 	      <li>&nbsp;&nbsp;&nbsp;<input type="checkbox" name="brands[]" value="Corsair" id="id0003"><font size="4">Corsair</font></li>
 	    </ul>
 	    <ul>
-	      <button type="submit" id="search" class="btn btn-default">Submit</button>
+
 	    </ul>
 	  </div><!--/.well -->
         </div><!--/span-->
@@ -105,21 +105,47 @@
 	  <table class="table table-hover">
 	    <thead>
               <tr>
-		<th>Part</th>
-		<th>Price</th>
-		<th></th>
+		<td>CPU</td>
+		<td>Speed</td>
+		<td>Cores</td>
+		<td>Rating</td>
+		<td>Price</td>
+		<td></td>
 	      </tr>
             </thead>
             <tbody>
-
-	      {% for x in results %}
-	      <tr>
-		<td><a href="/parts/{{ x['itemnumber'] }}">{{ x["stuff"]["Title"] }}</a></td>
-		<td>{{ x["stuff"]["fPrice"] }}</td>
-		<td><a href="/add/{{ x['itemnumber'] }}" class="btn btn-default btn-xs" role="button">Add to Cart</a></td>
+	      <tr class="Intel">
+		<td class="brand" value="Intel">Intel</td>
+		<td>3.5GHz</td>
+		<td>4</td>
+		<td>5</td>
+		<td>$728</td>
+		<td><a href="/add/intel7" class="btn btn-default btn-xs" role="button">Add to Cart</td>
 	      </tr>
-	      {% endfor %}
-
+	      <tr class="Corsair">
+		<td class="brand" value="Corsair">Corsair</td>
+		<td>2.2GHz</td>
+		<td>4</td>
+		<td>5</td>
+		<td>$128</td>
+		<td><a href="/add/Corsair" class="btn btn-default btn-xs" role="button">Add to Cart</td>
+	      </tr>
+	      <tr class="AMD">
+		<td class="brand" value="AMD">AMD</td>
+		<td>3.2GHz</td>
+		<td>8</td>
+		<td>5</td>
+		<td>$228</td>
+		<td><a href="/add/AMD" class="btn btn-default btn-xs" role="button">Add to Cart</td>
+	      </tr>
+	      <tr class="Intel">
+		<td class="brand" value="Intel">Intel</td>
+		<td>2.8GHz</td>
+		<td>2</td>
+		<td>4.5</td>
+		<td>$528</td>
+		<td><a href="/add/intel5" class="btn btn-default btn-xs" role="button">Add to Cart</td>
+	      </tr>
             </tbody>
 	  </table>
         </div><!--/span-->
@@ -137,13 +163,6 @@
   </body>
 
 
-   
-    <script>
-      $( document ).ready(function() {
-      $( "input:checkbox" ).click(function( event ) {
-      console.log("true")
-      });
-      });
-    </script>
+ <script type="text/javascript" src="../static/main.js"></script>
 
 </html>
