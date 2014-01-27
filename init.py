@@ -26,10 +26,10 @@ def check(string):
     string = string.lower()
     list = ["asus", "ddr3", "intel", "crucial", "wd", "western digital", "seagate", "corsair", "gigabyte", "msi",
             "g.skill", "samsung", "ocz", "plextor", "antec", "cooler master", "nzxt", "fractal design", "cougar", "thermaltake",
-            "rosewill", "asrock", "radeon r9", "gtx 6", "radeon hd 78", "be quiet", "seasonic"]
+            "rosewill", "asrock", "radeon r9", "gtx 6", "radeon hd 78", "be quiet", "seasonic", "amd"]
     if ("open box" in string or "refurbished" in string):
         return False
-    bad = ["ecs", "supermicro", "avatar", "biostar", "five star inc", "foxconn", "jetway", "l337"]
+    bad = ["ecs", "supermicro", "avatar", "biostar", "five star inc", "foxconn", "jetway", "l337", "vivo", "ipad"]
     for x in bad:
         if x in string:
             return False
@@ -169,8 +169,8 @@ def init(group, names,something,thingy):
             final = asdf[count]
             addstuff = dict()
             addstuff["Title"] = final["Title"].encode("ascii","ignore")
-            addstuff["fPrice"] = final["FinalPrice"].encode("ascii","ignore")
-            addstuff["oPrice"] = final["OriginalPrice"].encode("ascii","ignore")
+            addstuff["fPrice"] = final["FinalPrice"].encode("ascii","ignore").replace(",","")
+            addstuff["oPrice"] = final["OriginalPrice"].encode("ascii","ignore").replace(",","")
             addstuff["Model"] = final["Model"].encode("ascii","ignore")
             addstuff["ItemNumber"] = final["ItemNumber"].encode("ascii","ignore")
             addstuff["Newegg"] = final["NeweggItemNumber"].encode("ascii","ignore")
