@@ -122,12 +122,8 @@ def init(group, names,something,thingy):
         final = asdf[count]
         addstuff = dict()
         addstuff["Title"] = final["Title"].encode("ascii","ignore")
-        try:
-            addstuff["fPrice"] = float(final["FinalPrice"][1:].encode("ascii","ignore").replace(",",""))
-            addstuff["oPrice"] = float(final["OriginalPrice"][1:].encode("ascii","ignore").replace(",",""))
-        except:
-            addstuff["fPrice"] = final["FinalPrice"].encode("ascii","ignore").replace(",","")
-            addstuff["oPrice"] = final["OriginalPrice"].encode("ascii","ignore").replace(",","")
+        addstuff["fPrice"] = final["FinalPrice"].encode("ascii","ignore").replace(",","")
+        addstuff["oPrice"] = final["OriginalPrice"].encode("ascii","ignore").replace(",","")
         addstuff["Model"] = final["Model"].encode("ascii","ignore")
         addstuff["ItemNumber"] = final["ItemNumber"].encode("ascii","ignore")
         addstuff["Newegg"] = final["NeweggItemNumber"].encode("ascii","ignore")
@@ -173,12 +169,8 @@ def init(group, names,something,thingy):
             final = asdf[count]
             addstuff = dict()
             addstuff["Title"] = final["Title"].encode("ascii","ignore")
-            try:
-                addstuff["fPrice"] = float(final["FinalPrice"][1:].encode("ascii","ignore").replace(",",""))
-                addstuff["oPrice"] = float(final["OriginalPrice"][1:].encode("ascii","ignore").replace(",",""))
-            except:
-                addstuff["fPrice"] = final["FinalPrice"].encode("ascii","ignore").replace(",","")
-                addstuff["oPrice"] = final["OriginalPrice"].encode("ascii","ignore").replace(",","")
+            addstuff["fPrice"] = final["FinalPrice"].encode("ascii","ignore").replace(",","")
+            addstuff["oPrice"] = final["OriginalPrice"].encode("ascii","ignore").replace(",","")
             addstuff["Model"] = final["Model"].encode("ascii","ignore")
             addstuff["ItemNumber"] = final["ItemNumber"].encode("ascii","ignore")
             addstuff["Newegg"] = final["NeweggItemNumber"].encode("ascii","ignore")
