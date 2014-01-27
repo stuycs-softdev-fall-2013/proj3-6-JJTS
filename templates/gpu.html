@@ -106,7 +106,13 @@
             <tbody>
 
 	      {% for x in results %}
+	      {% if x["specs"] %}
+	      {% if x["specs"]["Model"] %}
+              <tr id="{{ x['specs']['Model']['Brand'] }}">
+		{% endif %}
+		{% else%}
 	      <tr>
+		{% endif %}
 		<td><a href="/parts/{{ x['itemnumber'] }}">{{ x["stuff"]["Title"] }}</a></td>
 		<td>{{ x["stuff"]["fPrice"] }}</td>
 		<td><a href="/add/{{ x['itemnumber'] }}" class="btn btn-default btn-xs" role="button">Add to Build</a></td>
