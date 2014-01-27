@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>PC Part Picker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+
+      @media (max-width: 980px) {
+        /* Enable use of floated navbar text */
+        .navbar-text.pull-right {
+          float: none;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+    </style>
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">PC Part Picker</a>
+          <div class="nav-collapse collapse">
+	    {% if username %}
+            <p class="navbar-text pull-right">
+              Logged in as <a href="#" class="navbar-link">{{ username }}</a>
+	      &middot;
+              <a href="/logout" class="navbar-link">Logout</a>
+            </p>
+	    {% else %}
+	    <p class="navbar-text pull-right">
+              <a class="navbar-link" href="/login">Login</a> 
+&middot;
+              <a class="navbar-link" href="/register">Register</a>
+            </p>
+	    {% endif %}
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+	      <li><a href="/build">Current Build</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Parts</li>
+              <li><a href="/cpu">CPUs</a></li>
+              <li><a href="/mobo">Motherboards</a></li>
+              <li><a href="/ram">RAM</a></li>
+              <li><a href="/hdd">Hard Drives</a></li>
+              <li><a href="/ssd">Solid State Drives</a></li>
+              <li><a href="/gpu">Graphics Cards</a></li>
+              <li><a href="/psu">Power Supplies</a></li>
+              <li><a href="/case">Cases</a></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+	  <div class="hero-unit">
+	    <h1>Added to your build!</h1>
+	    <p></p>
+            <p><a href="/build" class="btn btn-primary btn-large">Check out your build &raquo;</a></p>
+          </div>
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>&copy; JJTS</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/bootstrap-transition.js"></script>
+    <script src="../static/js/bootstrap-alert.js"></script>
+    <script src="../static/js/bootstrap-modal.js"></script>
+    <script src="../static/js/bootstrap-dropdown.js"></script>
+    <script src="../static/js/bootstrap-scrollspy.js"></script>
+    <script src="../static/js/bootstrap-tab.js"></script>
+    <script src="../static/js/bootstrap-tooltip.js"></script>
+    <script src="../static/js/bootstrap-popover.js"></script>
+    <script src="../static/js/bootstrap-button.js"></script>
+    <script src="../static/js/bootstrap-collapse.js"></script>
+    <script src="../static/js/bootstrap-carousel.js"></script>
+    <script src="../static/js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>
