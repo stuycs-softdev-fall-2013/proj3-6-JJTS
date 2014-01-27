@@ -25,11 +25,11 @@ def login():
         password = request.form['password'].encode('ascii', 'ignore')
         if auth.login(username, password) == "True":
             session['username'] = username
-            return render_template('build.html', username = session['username'])
+            return render_template('home.html', username = session['username'])
         if auth.login(username, password) == 'No account with that username':
             error1 = auth.login(username, password)
             return render_template('login.html', error1 = error1)
-        if auth.login(username, password) == "Password doesn't match username":
+        if auth.login(username, password) == "Username or password is invalid":
             error2 = auth.login(username, password)
             return render_template('login.html', error2 = error2)
 
@@ -124,9 +124,9 @@ def build():
 def remove(part):
     session.pop(part, None)
     if 'username' in session:
-        return render_template('build.html', username= session['username'], session=session)
+        return render_template('rem.html', username=session['username'])
     else:
-        return render_template('build.html', session = session)
+        return render_template('rem.html')
 
 @app.route('/logout')
 def logout():
