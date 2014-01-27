@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,7 +37,6 @@
 
     <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="../assets/ico/favicon.png">
-  
   </head>
 
   <body>
@@ -55,7 +55,7 @@
             <p class="navbar-text pull-right">
               Logged in as <a href="#" class="navbar-link">{{ username }}</a>
 	      &middot;
-	      <a href="/logout" class="navbar-link">Logout</a>
+              <a href="/logout" class="navbar-link">Logout</a>
             </p>
 	    {% else %}
 	    <p class="navbar-text pull-right">
@@ -65,8 +65,8 @@
             </p>
 	    {% endif %}
             <ul class="nav">
-              <li><a href="/home">Home</a></li>
-	      <li class="active"><a href="/build">Current Build</a></li>
+              <li class="active"><a href="#">Home</a></li>
+	      <li><a href="/build">Current Build</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -79,7 +79,7 @@
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Parts</li>
-              <li class="active"><a href="/cpu">CPUs</a></li>
+              <li><a href="/cpu">CPUs</a></li>
               <li><a href="/mobo">Motherboards</a></li>
               <li><a href="/ram">RAM</a></li>
               <li><a href="/hdd">Hard Drives</a></li>
@@ -91,26 +91,11 @@
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
-	  <table class="table table-hover">
-	    <thead>
-              <tr>
-		<th>Part</th>
-		<th>Price</th>
-		<th></th>
-	      </tr>
-            </thead>
-            <tbody>
-
-	      {% for x in results %}
-	      <tr>
-		<td><a href="/parts/{{ x['itemnumber'] }}">{{ x["stuff"]["Title"] }}</a></td>
-		<td>{{ x["stuff"]["fPrice"] }}</td>
-		<td><a href="/add/{{ x['itemnumber'] }}" class="btn btn-default btn-xs" role="button">Add to Cart</a></td>
-	      </tr>
-	      {% endfor %}
-
-            </tbody>
-	  </table>
+	  <div class="hero-unit">
+	    <h1>Removed from your build :(</h1>
+	    <p></p>
+            <p><a href="/build" class="btn btn-primary btn-large">Check out your build &raquo;</a></p>
+          </div>
         </div><!--/span-->
       </div><!--/row-->
 
@@ -121,7 +106,6 @@
       </footer>
 
     </div><!--/.fluid-container-->
-    
 
   </body>
 </html>
