@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, redirect, request, session
 from pymongo import MongoClient
-import utils
+import utils,auth
 
 client = MongoClient()
 db = client.pcparts
@@ -26,30 +26,41 @@ def login():
         if auth.login(username, password) == "True":
             session['username'] = username
             return render_template('build.html', username = session['username'])
-        else:
-            error = auth.login(username, password)
-            return render_template('login.html', error = error)
+        if auth.login(username, password) == 'No account with that username':
+            error1 = auth.login(username, password)
+            return render_template('login.html', error1 = error1)
+        if auth.login(username, password) == "Password doesn't match username":
+            error2 = auth.login(username, password)
+            return render_template('login.html', error2 = error2)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'GET':
         return render_template('register.html')
     else:
-        username = request.form['username']
-        password = request.form['password']
-        if auth.register(username,password) == 'True':
-            return render_template('login.html', username = session['username'])
-        else:
-            error = auth.register(username, password)
-            return render_template('register.html"', error = error)
+        username = request.form['username'].encode('ascii', 'ignore')
+        password = request.form['password'].encode('ascii', 'ignore')
+        checkpas = request.form['checkpas'].encode('ascii', 'ignore')
+        email = request.form['email'].encode('ascii', 'ignore')
+        if auth.register(username,password,checkpas,email) == 'True':
+            return render_template('home.html')
+        if auth.register(username,password,checkpas,email) == 'There is a account with that username':
+            error1 = auth.register(username, password,checkpas,email)
+            return render_template('register.html', error1 = error1)
+        if auth.register(username,password,checkpas,email) == "Passwords aren't the same":
+            error2 = auth.register(username, password,checkpas,email)
+            return render_template('register.html', error2 = error2)
+        if auth.register(username,password,checkpas,email) == "There is an account with that email":
+            error3 = auth.register(username, password,checkpas,email)
+            return render_template('register.html', error3 = error3)
 
 @app.route('/parts/<itemnum>')
 def parts(itemnum):
-    result = db.parts.find_one({'itemnumber':itemnum})
+    results = db.parts.find_one({'itemnumber':itemnum})
     if 'username' in session:
-        return render_template('parts.html', username = session['username'], result=result)
+        return render_template('parts.html', username = session['username'], results=results)
     else:
-        return render_template('parts.html', result=result)
+        return render_template('parts.html', results=results)
 
 @app.route('/add/<itemnum>')
 def add(itemnum):
