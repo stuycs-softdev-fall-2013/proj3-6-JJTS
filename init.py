@@ -29,7 +29,7 @@ def check(string):
             "rosewill", "asrock", "radeon r9", "gtx 6", "radeon hd 78", "be quiet", "seasonic", "amd"]
     if ("open box" in string or "refurbished" in string):
         return False
-    bad = ["ecs", "supermicro", "avatar", "biostar", "five star inc", "foxconn", "jetway", "l337", "vivo", "ipad"]
+    bad = ["ecs", "supermicro", "avatar", "biostar", "five star inc", "foxconn", "jetway", "l337"]
     for x in bad:
         if x in string:
             return False
@@ -186,7 +186,7 @@ def init(group, names,something,thingy):
         pagenum = pagenum + 1
                 
         
-i = 0
+i = 3
 while (i < 8):
     init(group[i], names, 0,i)
     i = i + 1
