@@ -97,6 +97,7 @@
 		<th>Component</th>
 		<th>Part</th>
 		<th>Price</th>
+		<th></th>
 	      </tr>
             </thead>
             <tbody>
@@ -106,8 +107,10 @@
 		{% if results["cpu"] %}
                 <td><a href="/parts/{{ results['cpu']['itemnumber'] }}">{{ results["cpu"]["stuff"]["Title"] }}</a></td>
                 <td>{{ results["cpu"]["stuff"]["fPrice"] }}</td>
+		<td><a href="/remove/cpu" class="btn btn-default btn-xs" role="button">Remove</a></td>
 		{% else %}
 		<td><a href="/cpu" class="btn btn-default btn-xs" role="button">Pick a CPU</a></td>
+		<td></td>
 		<td></td>
 		{% endif %}
               </tr>
@@ -117,9 +120,11 @@
 		{% if results["mobo"] %}
                 <td><a href="/parts/{{ results['mobo']['itemnumber'] }}">{{ results["mobo"]["stuff"]["Title"] }}</a></td>
                 <td>{{ results["mobo"]["stuff"]["fPrice"] }}</td>
-                {% else %}
+                <td><a href="/remove/mobo" class="btn btn-default btn-xs" role="button">Remove</a></td>
+		{% else %}
                 <td><a href="/mobo" class="btn btn-default btn-xs" role="button">Pick a Motherboard</a></td>
                 <td></td>
+		<td></td>
                 {% endif %}
 	      </tr>
 
@@ -128,9 +133,11 @@
 		{% if results["ram"] %}
                 <td><a href="/parts/{{ results['ram']['itemnumber'] }}">{{ results["ram"]["stuff"]["Title"] }}</a></td>
                 <td>{{ results["ram"]["stuff"]["fPrice"] }}</td>
-                {% else %}
+		<td><a href="/remove/ram" class="btn btn-default btn-xs" role="button">Remove</a></td>
+		{% else %}
                 <td><a href="/ram" class="btn btn-default btn-xs" role="button">Pick some RAM</a></td>
                 <td></td>
+		<td></td>
                 {% endif %}
 	      </tr>
 
@@ -139,9 +146,11 @@
 		{% if results["hdd"] %}
                 <td><a href="/parts/{{ results['hdd']['itemnumber'] }}">{{ results["hdd"]["stuff"]["Title"] }}</a></td>
                 <td>{{ results["hdd"]["stuff"]["fPrice"] }}</td>
+		<td><a href="/remove/hdd" class="btn btn-default btn-xs" role="button">Remove</a></td>
                 {% else %}
                 <td><a href="/hdd" class="btn btn-default btn-xs" role="button">Pick a Hard Drive</a></td>
                 <td></td>
+		<td></td>
                 {% endif %}
               </tr>
 	      
@@ -150,9 +159,11 @@
 		{% if results["ssd"] %}
                 <td><a href="/parts/{{ results['ssd']['itemnumber'] }}">{{ results["ssd"]["stuff"]["Title"] }}</a></td>
                 <td>{{ results["ssd"]["stuff"]["fPrice"] }}</td>
-                {% else %}
+                <td><a href="/remove/ssd" class="btn btn-default btn-xs" role="button">Remove</a></td>
+		{% else %}
                 <td><a href="/ssd" class="btn btn-default btn-xs" role="button">Pick a SSD</a></td>
                 <td></td>
+		<td></td>
                 {% endif %}
               </tr>
 	      
@@ -161,9 +172,11 @@
 		{% if results["gpu"] %}
                 <td><a href="/parts/{{ results['gpu']['itemnumber'] }}">{{ results["gpu"]["stuff"]["Title"] }}</a></td>
                 <td>{{ results["gpu"]["stuff"]["fPrice"] }}</td>
-                {% else %}
+                <td><a href="/remove/gpu" class="btn btn-default btn-xs" role="button">Remove</a></td>
+		{% else %}
                 <td><a href="/gpu" class="btn btn-default btn-xs" role="button">Pick a Graphics Card</a></td>
                 <td></td>
+		<td></td>
                 {% endif %}
               </tr>
 
@@ -172,9 +185,11 @@
 		{% if results["psu"] %}
                 <td><a href="/parts/{{ results['psu']['itemnumber'] }}">{{ results["psu"]["stuff"]["Title"] }}</a></td>
                 <td>{{ results["psu"]["stuff"]["fPrice"] }}</td>
-                {% else %}
+                <td><a href="/remove/psu" class="btn btn-default btn-xs" role="button">Remove</a></td>
+		{% else %}
                 <td><a href="/psu" class="btn btn-default btn-xs" role="button">Pick a Power Supply</a></td>
                 <td></td>
+		<td></td>
                 {% endif %}
               </tr>
 
@@ -183,9 +198,11 @@
 		{% if results["case"] %}
                 <td><a href="/parts/{{ results['case']['itemnumber'] }}">{{ results["case"]["stuff"]["Title"] }}</a></td>
                 <td>{{ results["case"]["stuff"]["fPrice"] }}</td>
-                {% else %}
+                <td><a href="/remove/case" class="btn btn-default btn-xs" role="button">Remove</a></td>
+		{% else %}
                 <td><a href="/case" class="btn btn-default btn-xs" role="button">Pick some RAM</a></td>
                 <td></td>
+		<td></td>
                 {% endif %}
               </tr>
 

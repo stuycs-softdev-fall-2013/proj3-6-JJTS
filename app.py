@@ -124,9 +124,9 @@ def build():
 def remove(part):
     session.pop(part, None)
     if 'username' in session:
-        return render_template('build.html', username= session['username'], session=session)
+        return render_template('rem.html', username=session['username'])
     else:
-        return render_template('build.html', session = session)
+        return render_template('rem.html')
 
 @app.route('/logout')
 def logout():
