@@ -109,7 +109,13 @@
             <tbody>
 
 	      {% for x in results %}
+	      {% if x["specs"] %}
+              {% if x["specs"]["Model"] %}
+	      <tr class="{{ x['specs']['Model']['Brand'] }}">
+		{% else %}
               <tr>
+		{% endif %}
+		{% endif %}
 		<td><a href="/parts/{{ x['itemnumber'] }}">{{ x["stuff"]["Title"] }}</a></td>
 		{% if x["specs"] %}
 		{% if x["specs"]["Model"] %}
