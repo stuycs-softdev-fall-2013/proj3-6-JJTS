@@ -18,9 +18,9 @@ def register(username,password,chkpw,email):
 
 def login(user,password):
     check=db.users.find_one({'username':user,'password':password}, fields={'_id':False})
-    if(db.users.find({"username":user}).count()) != 0:
+    if (db.users.find({"username":user}).count()) == 0:
         return "No account with that username"
     elif check == None:
-        return "Password doesn't match username"
+        return "Username or password is invalid"
     else:
         return 'True'
