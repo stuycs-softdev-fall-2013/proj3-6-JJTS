@@ -52,27 +52,36 @@ def parts(itemnum):
         return render_template('parts.html', result=result)
 
 @app.route('/add/<itemnum>')
-def addpart(itemnum):
+def add(itemnum):
+    results = dict()
     if (db.cpus.find_one({'itemnumber':itemnum})):
         session['cpu'] = itemnum
+        results['cpu'] = db.cpus.find_one({'itemnum':itemnum})
     if (db.cases.find_one({'itemnumber':itemnum})):
         session['case'] = itemnum
+        results['case'] = db.cases.find_one({'itemnum':itemnum})
     if (db.hdds.find_one({'itemnumber':itemnum})):
         session['hdd'] = itemnum
+        results['hdd'] = db.hdds.find_one({'itemnum':itemnum})
     if (db.ssds.find_one({'itemnumber':itemnum})):
         session['ssd'] = itemnum
+        results['ssd'] = db.ssds.find_one({'itemnum':itemnum})
     if (db.ram.find_one({'itemnumber':itemnum})):
         session['ram'] = itemnum
+        results['ram'] = db.ram.find_one({'itemnum':itemnum})
     if (db.mobos.find_one({'itemnumber':itemnum})):
         session['mobo'] = itemnum
+        results['mobo'] = db.mobos.find_one({'itemnum':itemnum})
     if (db.psus.find_one({'itemnumber':itemnum})):
         session['psu'] = itemnum
+        results['psu'] = db.psus.find_one({'itemnum':itemnum})
     if (db.gpus.find_one({'itemnumber':itemnum})):
         session['gpu'] = itemnum
+        results['gpu'] = db.gpus.find_one({'itemnum':itemnum})
     if 'username' in session:
-        return redirect_template('build.html', username= session['username'], session=session)
+        return render_template('redir.html', username= session['username'])
     else:
-        return redirect_template('build.html', session = session)
+        return render_template('redir.html')
 
 
 @app.route('/build')
@@ -82,100 +91,100 @@ def build():
         if x == 'cpu':
             results['cpu'] = db.cpus.find_one({'itemnumber':session[x]})
         if x == 'case':
-            results['case'] = db.cpus.find_one({'itemnumber':session[x]})
+            results['case'] = db.cases.find_one({'itemnumber':session[x]})
         if x =='gpu':
-            results['gpu'] = db.cpus.find_one({'itemnumber':session[x]})
+            results['gpu'] = db.gpus.find_one({'itemnumber':session[x]})
         if x == 'psu':
-            results['psu'] = db.cpus.find_one({'itemnumber':session[x]})
+            results['psu'] = db.psus.find_one({'itemnumber':session[x]})
         if x =='hdd':
-            results['hdd'] = db.cpus.find_one({'itemnumber':session[x]})
+            results['hdd'] = db.hdds.find_one({'itemnumber':session[x]})
         if x == 'ssd':
-            results['ssd'] = db.cpus.find_one({'itemnumber':session[x]})
+            results['ssd'] = db.ssds.find_one({'itemnumber':session[x]})
         if x =='ram':
-            results['ram'] = db.cpus.find_one({'itemnumber':session[x]})
+            results['ram'] = db.ram.find_one({'itemnumber':session[x]})
         if x == 'mobo':
-            results['mobo'] = db.cpus.find_one({'itemnumber':session[x]})
+            results['mobo'] = db.mobos.find_one({'itemnumber':session[x]})
     if 'username' in session:
-        return redirect_template('build.html', username = session['username'], results=results)
+        return render_template('build.html', username = session['username'], results=results)
     else:
-        return redirect_template('build.html', results=results)
+        return render_template('build.html', results=results)
 
 @app.route('/remove/<part>')
 def remove(part):
     session.pop(part, None)
     if 'username' in session:
-        return redirect_template('build.html', username= session['username'], session=session)
+        return render_template('build.html', username= session['username'], session=session)
     else:
-        return redirect_template('build.html', session = session)
+        return render_template('build.html', session = session)
 
 @app.route('/logout')
 def logout():
     session.pop('username', None)
-    return redirect_template('home.html')
+    return render_template('home.html')
 
 @app.route('/cpu')
 def cpu():
-    result = list(db.cpus.find({}, fields={'_id':False}))
+    results = list(db.cpus.find({}, fields={'_id':False}))
     if 'username' in session:
-        return render_template('cpu.html', username = session['username'], result=result)
+        return render_template('cpu.html', username = session['username'], results=results)
     else:
-        return render_template('cpu.html', result=result)
+        return render_template('cpu.html', results=results)
 
 @app.route('/mobo')
 def mobo():
-    result = list(db.mobos.find({}, fields={'_id':False}))
+    results = list(db.mobos.find({}, fields={'_id':False}))
     if 'username' in session:
-        return render_template('mobo.html', username = session['username'], result=result)
+        return render_template('mobo.html', username = session['username'], results=results)
     else:
-        return render_template('mobo.html', result=result)
+        return render_template('mobo.html', results=results)
 
 @app.route('/ram')
 def ram():
-    result = list(db.ram.find({}, fields={'_id':False}))
+    results = list(db.ram.find({}, fields={'_id':False}))
     if 'username' in session:
-        return render_template('ram.html', username = session['username'], result=result)
+        return render_template('ram.html', username = session['username'], results=results)
     else:
-        return render_template('ram.html', result=result)
+        return render_template('ram.html', results=results)
 
 @app.route('/hdd')
 def hdd():
-    result = list(db.hdds.find({}, fields={'_id':False}))
+    results = list(db.hdds.find({}, fields={'_id':False}))
     if 'username' in session:
-        return render_template('hdd.html', username = session['username'], result=result)
+        return render_template('hdd.html', username = session['username'], results=results)
     else:
-        return render_template('hdd.html', result=result)
+        return render_template('hdd.html', results=results)
 
 @app.route('/ssd')
 def ssd():
-    result = list(db.ssds.find({}, fields={'_id':False}))
+    results = list(db.ssds.find({}, fields={'_id':False}))
     if 'username' in session:
-        return render_template('ssd.html', username = session['username'], result=result)
+        return render_template('ssd.html', username = session['username'], results=results)
     else:
-        return render_template('ssd.html', result=result)
+        return render_template('ssd.html', results=results)
 
 @app.route('/gpu')
 def gpu():
-    result = list(db.gpus.find({}, fields={'_id':False}))
+    results = list(db.gpus.find({}, fields={'_id':False}))
     if 'username' in session:
-        return render_template('gpu.html', username = session['username'], result=result)
+        return render_template('gpu.html', username = session['username'], results=results)
     else:
-        return render_template('gpu.html', result=result)
+        return render_template('gpu.html', results=results)
 
 @app.route('/psu')
 def psu():
-    result = list(db.psus.find({}, fields={'_id':False}))
+    results = list(db.psus.find({}, fields={'_id':False}))
     if 'username' in session:
-        return render_template('psu.html', username = session['username'], result=result)
+        return render_template('psu.html', username = session['username'], results=results)
     else:
-        return render_template('psu.html', result=result)
+        return render_template('psu.html', results=results)
 
 @app.route('/case')
 def case():
-    result = list(db.cases.find({}, fields={'_id':False}))
+    results = list(db.cases.find({}, fields={'_id':False}))
     if 'username' in session:
-        return render_template('case.html', username = session['username'], result=result)
+        return render_template('case.html', username = session['username'], results=results)
     else:
-        return render_template('case.html', result=result)
+        return render_template('case.html', results=results)
 
 if __name__ == '__main__':
     app.debug = True

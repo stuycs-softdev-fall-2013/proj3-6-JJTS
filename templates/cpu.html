@@ -37,6 +37,7 @@
 
     <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  
   </head>
 
   <body>
@@ -63,8 +64,8 @@
             </p>
 	    {% endif %}
             <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-	      <li><a href="/build">Current Build</a></li>
+              <li><a href="/home">Home</a></li>
+	      <li class="active"><a href="/build">Current Build</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -77,7 +78,7 @@
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Parts</li>
-              <li><a href="/cpu">CPUs</a></li>
+              <li class="active"><a href="/cpu">CPUs</a></li>
               <li><a href="/mobo">Motherboards</a></li>
               <li><a href="/ram">RAM</a></li>
               <li><a href="/hdd">Hard Drives</a></li>
@@ -89,26 +90,26 @@
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
-          <div class="hero-unit">
-            <h1>Hello, world!</h1>
-            <p>Welcome to our imitation of <a href="https://www.pcpartpicker.com">PC Part Picker</a>. Get started immediately on your next build!</p>
-            <p><a href="/build" class="btn btn-primary btn-large">Start building &raquo;</a></p>
-          </div>
-	  
-          <div class="row-fluid">
-            <div class="span12">
-              <h2>Featured Build #1</h2>
-              <p>Hard code</p
-              <p><a class="btn" href="#">View details(if u wanna make a new template) &raquo;</a></p>
-            </div><!--/span-->
-          </div><!--/row-->
-          <div class="row-fluid">
-            <div class="span12">
-              <h2>Featured Build #2</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn" href="#">View details &raquo;</a></p>
-            </div><!--/span-->
-          </div><!--/row-->
+	  <table class="table table-hover">
+	    <thead>
+              <tr>
+		<th>Part</th>
+		<th>Price</th>
+		<th></th>
+	      </tr>
+            </thead>
+            <tbody>
+
+	      {% for x in results %}
+	      <tr>
+		<td><a href="/parts/{{ x['itemnumber'] }}">{{ x["stuff"]["Title"] }}</a></td>
+		<td>{{ x["stuff"]["fPrice"] }}</td>
+		<td><a href="/add/{{ x['itemnumber'] }}" class="btn btn-default btn-xs" role="button">Add to Cart</a></td>
+	      </tr>
+	      {% endfor %}
+
+            </tbody>
+	  </table>
         </div><!--/span-->
       </div><!--/row-->
 
@@ -119,23 +120,6 @@
       </footer>
 
     </div><!--/.fluid-container-->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../static/js/jquery.js"></script>
-    <script src="../static/js/bootstrap-transition.js"></script>
-    <script src="../static/js/bootstrap-alert.js"></script>
-    <script src="../static/js/bootstrap-modal.js"></script>
-    <script src="../static/js/bootstrap-dropdown.js"></script>
-    <script src="../static/js/bootstrap-scrollspy.js"></script>
-    <script src="../static/js/bootstrap-tab.js"></script>
-    <script src="../static/js/bootstrap-tooltip.js"></script>
-    <script src="../static/js/bootstrap-popover.js"></script>
-    <script src="../static/js/bootstrap-button.js"></script>
-    <script src="../static/js/bootstrap-collapse.js"></script>
-    <script src="../static/js/bootstrap-carousel.js"></script>
-    <script src="../static/js/bootstrap-typeahead.js"></script>
-
+    
   </body>
 </html>
