@@ -5,13 +5,13 @@
 
 ###Group Members:
 
-*Jia Sen Wu
+* Jia Sen Wu
 
-*Jason Luo
+* Jason Luo
 
-*Simon Chen
+* Simon Chen
 
-*Timothy Ong
+* Timothy Ong
 
 
 1. First run init.py while having mongod running
