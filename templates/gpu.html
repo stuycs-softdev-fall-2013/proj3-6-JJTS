@@ -99,6 +99,10 @@
 	    <thead>
               <tr>
 		<th>Part</th>
+		<th>Brand</th>
+		<th>GPU</th>
+		<th>Speed</th>
+		<th>Memory</th>
 		<th>Price</th>
 		<th></th>
 	      </tr>
@@ -106,14 +110,31 @@
             <tbody>
 
 	      {% for x in results %}
-	      {% if x["specs"] %}
-	      {% if x["specs"]["Model"] %}
-              <tr id="{{ x['specs']['Model']['Brand'] }}">
-		{% endif %}
-		{% else%}
 	      <tr>
-		{% endif %}
 		<td><a href="/parts/{{ x['itemnumber'] }}">{{ x["stuff"]["Title"] }}</a></td>
+		{% if x["specs"] %}
+		{% if x["specs"]["Model"] %}
+                <td>{{ x["specs"]["Model"]["Brand"] }}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+
+		{% if x["specs"]["Chipset"] %}
+                <td>{{ x["specs"]["Chipset"]["GPU"] }}</td>
+                <td>{{ x["specs"]["Chipset"]["Core Clock"] }}</td>
+                {% else %}
+                <td></td><td></td>
+                {% endif %}
+
+		{% if x["specs"]["Memory"] %}
+                <td>{{ x["specs"]["Memory"]["Memory Size"] }}</td>
+                {% else %}
+                <td></td>
+                {% endif %}
+		{% else %}
+		<td></td><td></td><td></td><td></td>		
+		{% endif %}
+
 		<td>{{ x["stuff"]["fPrice"] }}</td>
 		<td><a href="/add/{{ x['itemnumber'] }}" class="btn btn-default btn-xs" role="button">Add to Build</a></td>
 	      </tr>

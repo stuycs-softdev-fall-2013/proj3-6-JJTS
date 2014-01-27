@@ -98,7 +98,11 @@
 	  <table id="myTable" class="tablesorter table table-hover">
 	    <thead>
               <tr>
-		<th>Part</th>
+		<th>Name</th>
+		<th>Brand</th>
+		<th>Speed</th>
+		<th>Cores (alphabetical)</th>
+		<th>Socket</th>
 		<th>Price</th>
 		<th></th>
 	      </tr>
@@ -106,14 +110,16 @@
             <tbody>
 
 	      {% for x in results %}
-              {% if x["specs"] %}
-	            {% if x["specs"]["Model"] %}
-              <tr id="{{ x['specs']['Model']['Brand'] }}">
-		{% endif %}
-                {% else%}
               <tr>
-                {% endif %}
 		<td><a href="/parts/{{ x['itemnumber'] }}">{{ x["stuff"]["Title"] }}</a></td>
+		{% if x["specs"] %}
+		<td>{{ x["specs"]["Model"]["Brand"] }}</td>
+		<td>{{ x["specs"]["Specifications"]["Operating Frequency"] }}</td>
+		<td>{{ x["specs"]["Specifications"]["Multi-Core"] }}</td>
+		<td>{{ x["specs"]["Socket"]["CPU Socket Type"] }}</td>
+                {% else %}
+		<td></td><td></td><td></td><td></td>
+		{% endif %}
 		<td>{{ x["stuff"]["fPrice"] }}</td>
 		<td><a href="/add/{{ x['itemnumber'] }}" class="btn btn-default btn-xs" role="button">Add to Build</a></td>
 	      </tr>
