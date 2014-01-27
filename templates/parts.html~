@@ -30,18 +30,7 @@
     </style>
     <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
 
-<script type="text/javascript" src="/static/js/jquery.js"></script>
-    <script type="text/javascript" src="/static/js/tablesorter.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function()
-      {
-
-      $("#myTable").tablesorter({sortList:[[0,0],[2,1]], widgets:'zebra'});
-      }
-      );
-    </script>
     <link rel="shortcut icon" href="../assets/ico/favicon.png">
-  
   </head>
 
   <body>
@@ -60,7 +49,7 @@
             <p class="navbar-text pull-right">
               Logged in as <a href="#" class="navbar-link">{{ username }}</a>
 	      &middot;
-	      <a href="/logout" class="navbar-link">Logout</a>
+              <a href="/logout" class="navbar-link">Logout</a>
             </p>
 	    {% else %}
 	    <p class="navbar-text pull-right">
@@ -70,8 +59,8 @@
             </p>
 	    {% endif %}
             <ul class="nav">
-              <li><a href="/home">Home</a></li>
-	      <li class="active"><a href="/build">Current Build</a></li>
+              <li class="active"><a href="#">Home</a></li>
+	      <li><a href="/build">Current Build</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -87,7 +76,7 @@
               <li><a href="/cpu">CPUs</a></li>
               <li><a href="/mobo">Motherboards</a></li>
               <li><a href="/ram">RAM</a></li>
-              <li class="active"><a href="/hdd">Hard Drives</a></li>
+              <li><a href="/hdd">Hard Drives</a></li>
               <li><a href="/ssd">Solid State Drives</a></li>
               <li><a href="/gpu">Graphics Cards</a></li>
               <li><a href="/psu">Power Supplies</a></li>
@@ -96,29 +85,60 @@
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
-	  <table class="table table-hover tablesorter" id="myTable">
-	    <thead>
+	  {% for x in results %}
+	  {% if x == "specs" %}
+
+	  {% for y in results["specs"] %}
+	  <table class="table table-hover">
+            <thead>
               <tr>
-		<th>Part</th>
-		<th>Price</th>
-		<th></th>
-	      </tr>
+                <th><h1>{{ y }}</h1></th>
+                <td></td>
+              </tr>
             </thead>
             <tbody>
-
-	      {% for x in results %}
-	      <tr>
-		<td><a href="/parts/{{ x['itemnumber'] }}">{{ x["stuff"]["Title"] }}</a></td>
-		<td>{{ x["stuff"]["fPrice"] }}</td>
-		<td><a href="/add/{{ x['itemnumber'] }}" class="btn btn-default btn-xs" role="button">Add to Build</a></td>
-	      </tr>
+	      {% for z in results[x][y] %}
+	      
+              <tr>
+                <th>{{ z }}</th>
+                <td>{{ results[x][y][z] }}</td>
+              </tr>
 	      {% endfor %}
+	      
+            </tbody>
+	  </table>
+	  {% endfor %}
+	  {% endif %}
+	  
+	  {% if x == "reviews" %}
+	  <table class="table table-hover">
+	    <thead>
+	      <tr>
+		<th><h1>Reviews</h1> <h4>(out of 5)</h4></th>
+		<td></td>
+	      </tr>
+	    </thead>
+
+	    <tbody>
+              {% for y in results[x] %}
+
+              <tr>
+                <th>{{ y }}</th>
+                <td>{{ results[x][y] }}</td>
+              </tr>
+              {% endfor %}
 
             </tbody>
 	  </table>
-        </div><!--/span-->
-      </div><!--/row-->
+	  {% endif %}
 
+	  {% endfor %}
+	  
+	  <h2><font color="red"><strike>Original Price: {{ results["stuff"]["oPrice"] }}</strike></font></h2>
+	  <h2><font color="green">Final Price: {{ results["stuff"]["fPrice"] }}</font></h2>
+	  <a href="/add/{{ results['itemnumber'] }}" class="btn btn-default btn-xs" role="button">Add to Build</a>
+
+	</div>
       <hr>
 
       <footer>
@@ -126,6 +146,23 @@
       </footer>
 
     </div><!--/.fluid-container-->
-    
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/bootstrap-transition.js"></script>
+    <script src="../static/js/bootstrap-alert.js"></script>
+    <script src="../static/js/bootstrap-modal.js"></script>
+    <script src="../static/js/bootstrap-dropdown.js"></script>
+    <script src="../static/js/bootstrap-scrollspy.js"></script>
+    <script src="../static/js/bootstrap-tab.js"></script>
+    <script src="../static/js/bootstrap-tooltip.js"></script>
+    <script src="../static/js/bootstrap-popover.js"></script>
+    <script src="../static/js/bootstrap-button.js"></script>
+    <script src="../static/js/bootstrap-collapse.js"></script>
+    <script src="../static/js/bootstrap-carousel.js"></script>
+    <script src="../static/js/bootstrap-typeahead.js"></script>
+
   </body>
 </html>
