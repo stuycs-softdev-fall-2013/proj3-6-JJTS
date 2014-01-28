@@ -72,7 +72,7 @@
 	    {% endif %}
             <ul class="nav">
               <li><a href="/home">Home</a></li>
-	      <li class="active"><a href="/build">Current Build</a></li>
+	      <li><a href="/build">Current Build</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -101,6 +101,9 @@
 	    <thead>
               <tr>
 		<th>Part</th>
+		<th>Brand</th>
+		<th>Interface</th>
+		<th>Capacity</th>
 		<th>Price</th>
 		<th></th>
 	      </tr>
@@ -108,8 +111,31 @@
             <tbody>
 
 	      {% for x in results %}
-	      <tr>
+	      {% if x["specs"] %}
+              {% if x["specs"]["Model"] %}
+	      <tr class="{{ x['specs']['Model']['Brand'] }}">
+		{% else%}
+              <tr>
+		{% endif %}
+		{% endif %}
 		<td><a href="/parts/{{ x['itemnumber'] }}">{{ x["stuff"]["Title"] }}</a></td>
+                {% if x["specs"] %}
+                {% if x["specs"]["Model"] %}
+                <td>{{ x["specs"]["Model"]["Brand"] }}</td>
+                {% else %}
+                <td></td>
+		{% endif %}
+
+                {% if x["specs"]["Physical"] %}
+                <td>{{ x["specs"]["Physical"]["Interface"] }}</td>
+                <td>{{ x["specs"]["Physical"]["Capacity"] }}</td>
+                {% else %}
+                <td></td><td></td>
+		{% endif %}
+
+		{% else %}
+		<td></td><td></td><td></td>
+                {% endif %}
 		<td>{{ x["stuff"]["fPrice"] }}</td>
 		<td><a href="/add/{{ x['itemnumber'] }}" class="btn btn-default btn-xs" role="button">Add to Build</a></td>
 	      </tr>

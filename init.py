@@ -186,7 +186,7 @@ def init(group, names,something,thingy):
         pagenum = pagenum + 1
                 
         
-i = 3
+i = 0
 while (i < 8):
     init(group[i], names, 0,i)
     i = i + 1
