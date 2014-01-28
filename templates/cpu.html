@@ -96,6 +96,18 @@
               <li><a href="/psu">Power Supplies</a></li>
               <li><a href="/case">Cases</a></li>
             </ul>
+	    <ul id="filters" class="nav nav-list">
+              <li class="nav-header">Manafacuter</li>
+	      <li>&nbsp;&nbsp;&nbsp;<input type="checkbox" name="brands[]" value="Intel" id="id0001"/><font size="4">Intel</font></li>
+	      <li>&nbsp;&nbsp;&nbsp;<input type="checkbox" name="brands[]" value="AMD" id="id0002"/><font size="4">AMD</font></li>
+	      <li>&nbsp;&nbsp;&nbsp;<input type="checkbox" name="brands[]" value="Corsair" id="id0003"><font size="4">Corsair</font></li>
+	    </ul>
+	    <ul class="nav nav-list">
+	      <li class="nav-header">Price Range</li>
+	      <input type="text" id="min" placeholder="Minimum"></input>
+	      <input type="text" id="max" placeholder="Maximum"></input>
+	      <button id="btnFilter">Find</button>
+	    </ul>
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
@@ -123,14 +135,14 @@
 		{% endif %}
 		<td><a href="/parts/{{ x['itemnumber'] }}">{{ x["stuff"]["Title"] }}</a></td>
 		{% if x["specs"] %}
-		<td>{{ x["specs"]["Model"]["Brand"] }}</td>
+		<td class="brand">{{ x["specs"]["Model"]["Brand"] }}</td>
 		<td>{{ x["specs"]["Specifications"]["Operating Frequency"] }}</td>
 		<td>{{ x["specs"]["Specifications"]["Multi-Core"] }}</td>
 		<td>{{ x["specs"]["Socket"]["CPU Socket Type"] }}</td>
                 {% else %}
 		<td></td><td></td><td></td><td></td>
 		{% endif %}
-		<td>{{ x["stuff"]["fPrice"] }}</td>
+		<td class="price">{{ x["stuff"]["fPrice"] }}</td>
 		<td><a href="/add/{{ x['itemnumber'] }}" class="btn btn-default btn-xs" role="button">Add to Build</a></td>
 	      </tr>
 	      {% endfor %}
@@ -150,4 +162,7 @@
     
 
   </body>
+  
+  <script type="text/javascript" src="/static/js/filter.js"></script>
+  
 </html>
