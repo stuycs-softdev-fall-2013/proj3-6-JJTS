@@ -100,6 +100,7 @@ def add(itemnum):
 @app.route('/build')
 def build():
     results = dict()
+    sum = cpu = case = gpu = psu = hdd = ssd = ram = mobo = 0
     for x in session:
         if x == 'cpu':
             results['cpu'] = db.cpus.find_one({'itemnumber':session[x]})
@@ -117,10 +118,27 @@ def build():
             results['ram'] = db.ram.find_one({'itemnumber':session[x]})
         if x == 'mobo':
             results['mobo'] = db.mobos.find_one({'itemnumber':session[x]})
+	if db.cpus.find_one({'itemnumber':session[x]}):
+	    cpu = float(results['cpu']['stuff']['fPrice'].replace("$",""))
+	if db.cases.find_one({'itemnumber':session[x]}):
+	    case = float(results['case']['stuff']['fPrice'].replace("$",""))
+	if db.gpus.find_one({'itemnumber':session[x]}):
+	    gpu = float(results['gpu']['stuff']['fPrice'].replace("$",""))
+	if db.psus.find_one({'itemnumber':session[x]}):
+	    psu = float(results['psu']['stuff']['fPrice'].replace("$",""))
+	if db.hdds.find_one({'itemnumber':session[x]}):
+	    hdd = float(results['hdd']['stuff']['fPrice'].replace("$",""))
+	if db.ssds.find_one({'itemnumber':session[x]}):
+	    ssd = float(results['ssd']['stuff']['fPrice'].replace("$",""))
+	if db.ram.find_one({'itemnumber':session[x]}):
+	    ram = float(results['ram']['stuff']['fPrice'].replace("$",""))
+	if db.mobos.find_one({'itemnumber':session[x]}):
+	    mobo = float(results['mobo']['stuff']['fPrice'].replace("$",""))
+	sum = cpu+case+gpu+psu+hdd+ssd+ram+mobo
     if 'username' in session:
         return render_template('build.html', username = session['username'], results=results)
     else:
-        return render_template('build.html', results=results)
+        return render_template('build.html', results=results, add=sum)
 
 @app.route('/remove/<part>')
 def remove(part):

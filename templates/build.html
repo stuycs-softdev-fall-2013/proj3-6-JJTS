@@ -204,11 +204,16 @@
                 <td>{{ results["case"]["stuff"]["fPrice"] }}</td>
                 <td><a href="/remove/case" class="btn btn-default btn-xs" role="button">Remove</a></td>
 		{% else %}
-                <td><a href="/case" class="btn btn-default btn-xs" role="button">Pick some RAM</a></td>
+                <td><a href="/case" class="btn btn-default btn-xs" role="button">Pick a Case</a></td>
                 <td></td>
 		<td></td>
                 {% endif %}
               </tr>
+
+	      <tr>
+		<td>Total Price</td>
+		<td></td><td>${{ add }}</td><td></td>
+	      </tr>
 
             </tbody>
 	  </table>
