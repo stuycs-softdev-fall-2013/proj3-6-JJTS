@@ -67,11 +67,17 @@ $('#btnFilter').click(function() {
     var min = $('#min').val();
 
     var max = $('#max').val()
-
+    
+    if(max == 0){
+	max = 9999999999
+    }
     $('tr').show();
+    console.log(min)
 
     $('tr td.price').each(function() {
-        if ($(this).text() <= min && $(this).text() >= max)
+	console.log(max)
+	var num = $(this).text().substring(1)
+        if (num < min || num > max )
         {
             $(this).parent().hide();
         }
