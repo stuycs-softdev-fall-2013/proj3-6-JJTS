@@ -136,7 +136,7 @@ def build():
 	    mobo = float(results['mobo']['stuff']['fPrice'].replace("$",""))
 	sum = cpu+case+gpu+psu+hdd+ssd+ram+mobo
     if 'username' in session:
-        return render_template('build.html', username = session['username'], results=results)
+        return render_template('build.html', username = session['username'], results=results, add=sum)
     else:
         return render_template('build.html', results=results, add=sum)
 
