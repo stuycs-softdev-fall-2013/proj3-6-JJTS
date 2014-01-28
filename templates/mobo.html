@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,6 +25,11 @@
           padding-left: 5px;
           padding-right: 5px;
         }
+      }
+      
+      footer{
+      margin-top: 2.5em;
+      text-align: center;
       }
     </style>
     <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
@@ -95,6 +99,36 @@
               <li><a href="/psu">Power Supplies</a></li>
               <li><a href="/case">Cases</a></li>
             </ul>
+	    <ul id="filters" class="nav nav-list">
+              <li class="nav-header">Manafacuter</li>
+	      <li>&nbsp;&nbsp;
+                <input type="checkbox" name="brands[]" value="ASRock"/><font size="3">&nbsp;ASRock</font>
+              </li>
+	      <li>&nbsp;&nbsp;
+                <input type="checkbox" name="brands[]" value="ASUS"/><font size="3">&nbsp;ASUS</font>
+              </li>
+	      <li>&nbsp;&nbsp;
+                <input type="checkbox" name="brands[]" value="EVGA"/><font size="3">&nbsp;EVGA</font>
+              </li>
+	      <li>&nbsp;&nbsp;
+                <input type="checkbox" name="brands[]" value="GIGABYTE"/><font size="3">&nbsp;GIGABYTE</font>
+              </li>
+	      <li>&nbsp;&nbsp;
+                <input type="checkbox" name="brands[]" value="Intel"/><font size="3">&nbsp;Intel</font>
+              </li>
+	      <li>&nbsp;&nbsp;
+                <input type="checkbox" name="brands[]" value="MSI"/><font size="3">&nbsp;MSI</font>
+              </li>
+	      <li>&nbsp;&nbsp;
+                <input type="checkbox" name="brands[]" value="ZOTAC"/><font size="3">&nbsp;ZOTAC</font>
+              </li>
+	    </ul>
+	    <ul class="nav nav-list">
+	      <li class="nav-header">Price Range</li>
+	      <input type="text" id="min" placeholder="Minimum"></input>
+	      <input type="text" id="max" placeholder="Maximum"></input>
+	      <button id="btnFilter">Find</button>
+	    </ul>
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
@@ -123,7 +157,7 @@
 		<td><a href="/parts/{{ x['itemnumber'] }}">{{ x["stuff"]["Title"] }}</a></td>
 		{% if x["specs"] %}
                 {% if x["specs"]["Model"] %}
-                <td>{{ x["specs"]["Model"]["Brand"] }}</td>
+                <td class="brand">{{ x["specs"]["Model"]["Brand"] }}</td>
                 {% else %}
                 <td></td>
 		{% endif %}
@@ -149,7 +183,7 @@
 		{% else %}
 		<td></td><td></td><td></td><td></td>
                 {% endif %}
-		<td>{{ x["stuff"]["fPrice"] }}</td>
+		<td class="price">{{ x["stuff"]["fPrice"] }}</td>
 		<td><a href="/add/{{ x['itemnumber'] }}" class="btn btn-default btn-xs" role="button">Add to Build</a></td>
 	      </tr>
 	      {% endfor %}
@@ -168,4 +202,5 @@
     </div><!--/.fluid-container-->
     
   </body>
+   <script type="text/javascript" src="/static/js/filter.js"></script>
 </html>
