@@ -15,5 +15,4 @@ $(function build() {
 	if ($( "#slider" ).slider( "value" ) < 400) {
 		document.getElementById("build").innerHTML='<a href="/add/19-113-335">AMD A6-6400K 3.9GHz Dual-Core Processor</a>';
 	}
-	setTimeout(build,1000);
 });
