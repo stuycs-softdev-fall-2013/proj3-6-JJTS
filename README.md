@@ -21,6 +21,4 @@
 
 ##Bugs:
 
-* No filtering yet
-
-* Didn't do anything with login/users yet
+* Filtering doesn't filter items w/o brands. Might be a problem concerning the API. Need to create a catcher.
