@@ -36,8 +36,8 @@
 
     <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="../assets/ico/favicon.png">
-  
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+    <script type="text/javascript" src="../static/jquery.js" ></script
+    <!--<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>-->
 
   </head>
 
@@ -96,8 +96,11 @@
 	      <li>&nbsp;&nbsp;&nbsp;<input type="checkbox" name="brands[]" value="AMD" id="id0002"/><font size="4">AMD</font></li>
 	      <li>&nbsp;&nbsp;&nbsp;<input type="checkbox" name="brands[]" value="Corsair" id="id0003"><font size="4">Corsair</font></li>
 	    </ul>
-	    <ul>
-
+	    <ul class="nav nav-list">
+	      <li class="nav-header">Price Range</li>
+	      <input type="text" id="min" placeholder="Minimum"></input>
+	      <input type="text" id="max" placeholder="Maximum"></input>
+	      <button id="btnFilter">Find</button>
 	    </ul>
 	  </div><!--/.well -->
         </div><!--/span-->
@@ -115,35 +118,35 @@
             </thead>
             <tbody>
 	      <tr class="Intel">
-		<td class="brand" value="Intel">Intel</td>
+		<td class="brand" value="Intel">Intel i7</td>
 		<td>3.5GHz</td>
 		<td>4</td>
 		<td>5</td>
-		<td>$728</td>
+		<td class="price">$728</td>
 		<td><a href="/add/intel7" class="btn btn-default btn-xs" role="button">Add to Cart</td>
 	      </tr>
 	      <tr class="Corsair">
-		<td class="brand" value="Corsair">Corsair</td>
+		<td class="brand" value="Corsair">Corsair G12412</td>
 		<td>2.2GHz</td>
 		<td>4</td>
 		<td>5</td>
-		<td>$128</td>
+		<td class="price">$128</td>
 		<td><a href="/add/Corsair" class="btn btn-default btn-xs" role="button">Add to Cart</td>
 	      </tr>
 	      <tr class="AMD">
-		<td class="brand" value="AMD">AMD</td>
+		<td class="brand" value="AMD">AMD RQ47</td>
 		<td>3.2GHz</td>
 		<td>8</td>
 		<td>5</td>
-		<td>$228</td>
+		<td class="price">$228</td>
 		<td><a href="/add/AMD" class="btn btn-default btn-xs" role="button">Add to Cart</td>
 	      </tr>
 	      <tr class="Intel">
-		<td class="brand" value="Intel">Intel</td>
+		<td class="brand" value="Intel">Intel i5</td>
 		<td>2.8GHz</td>
 		<td>2</td>
 		<td>4.5</td>
-		<td>$528</td>
+		<td class="price">$528</td>
 		<td><a href="/add/intel5" class="btn btn-default btn-xs" role="button">Add to Cart</td>
 	      </tr>
             </tbody>
