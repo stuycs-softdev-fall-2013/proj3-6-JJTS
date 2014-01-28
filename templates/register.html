@@ -1,64 +1,91 @@
-
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charaset="utf-8">
+    <meta charset="utf-8">
+    <title>PC Part Picker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ComputerJockey &ndash; Menu</title>
-    <link rel="shortcut icon" href="https://cdn1.iconfinder.com/data/icons/3d-printing-icon-set/32/3d_print.png">
-    <link rel="stylesheet" href="../static/pure-skin-template.css">
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css">
-    <link rel="stylesheet" href="../static/button.css">
-    <link rel="stylesheet" href="../static/style.css">
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/grids-min.css">
-    <div id = "menu" class="pure-menu pure-menu-open pure-menu-horizontal pure-menu-selected pure-menu-heading pure-skin-template">
-      <li><a href="/" class="pure-menu-heading">ComputerJockey</a></li>
-      <ul>
-	<li><a href="/build">Current Build</a></li>
-	<!--{% if not username %}-->
-	<!--{% else %}-->
-	<li><a href="/saved">Saved Builds</a></li>
-	<!--{% endif %}-->  
-	<li><a href="/buildlist">Build List</a></li>	      
-	
-      </ul>
-      
-    </div>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
     
     <style type="text/css">
-     #main
-     {
-     position:absolute;
-     top:40%;
-     right:0;
-     left:0;
-     }
-     
-     #frm
-     {
-     display: inline-block;
-     vertical-align: middle;
-     line-height: 14px; 
-     }
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+      }
+
+      .form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+
     </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-responsive.css') }}">
 
   </head>
 
-<body>
-  <center>
-    <div id="main">
-      <form id="frm" class="pure-form" method="POST">
-	<fieldset class="pure-group">
-	  <input id="name" type="text" class="pure-input-1" placeholder="Username" required>
-	  <input id="pass" type="password" class="pure-input-1" placeholder="Password" required>
-	  <input id="confirmpass" type="password" class="pure-input-1" placeholder="Confirm Password" required>
-	  <input id="email" type="email" class="pure-input-1" placeholder="Email" required>
-	</fieldset>
+  <body>
 
-	<button type="submit" class="pure-button pure-input-1 pure-button-primary">Sign Up</button> Have an account? <a href="/login">Login here</a>
+    <div class="container">
 
+      <form class="form-signin" method="POST">
+        <h2 class="form-signin-heading">Register</h2>
+	{% if error1 %}
+	<div class="form-group has-error">
+	  <label class="control-label" for="inputError"><font color="red">{{ error1 }}</font></label>
+	  <input type="text" class="input-block-level" placeholder="Username" name="username">
+	</div>
+	{% else %}
+        <input type="text" class="input-block-level" placeholder="Username" name="username">
+	{% endif %}
+	
+	{% if error2 %}
+	<div class="form-group has-error">
+          <label class="control-label" for="inputError"><font color="red">{{ error2 }}</font></label>
+          <input type="password" class="input-block-level" placeholder="Password" name="password">
+          <input type="password" class="input-block-level" placeholder="Confirm Password" name="checkpas">
+        </div>
+	{% else %}
+        <input type="password" class="input-block-level" placeholder="Password" name="password">
+	<input type="password" class="input-block-level" placeholder="Confirm Password" name="checkpas">
+	{% endif %}
+
+	{% if error3 %}
+	<div class="form-group has-error">
+          <label class="control-label" for="inputError"><font color="red">{{ error3 }}</font></label>
+          <input type="email" class="input-block-level" placeholder="Email" name="email">
+        </div>
+	{% else %}
+	<input type="email" class="input-block-level" placeholder="Email" name="email">
+	{% endif %}
+
+        <button class="btn btn-large btn-primary" type="submit" value="submit" name="button">Register</button>
       </form>
-    </div>
-  </center>
 
-</body>
+    </div> <!-- /container -->
+
+  </body>
+</html>
