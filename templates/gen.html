@@ -33,6 +33,7 @@
       }
     </style>
     <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/static/css/jquery-ui.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -97,125 +98,11 @@
         </div><!--/span-->
         <div class="span9">
 	  <table class="table table-hover">
-	    <thead>
-              <tr>
-		<th>Component</th>
-		<th>Part</th>
-		<th>Price</th>
-		<th></th>
-	      </tr>
-            </thead>
             <tbody>
-
-              <tr>
-                <td>CPU</td>
-		{% if results["cpu"] %}
-                <td><a href="/parts/{{ results['cpu']['itemnumber'] }}">{{ results["cpu"]["stuff"]["Title"] }}</a></td>
-                <td>{{ results["cpu"]["stuff"]["fPrice"] }}</td>
-		<td><a href="/remove/cpu" class="btn btn-default btn-xs" role="button">Remove</a></td>
-		{% else %}
-		<td><a href="/cpu" class="btn btn-default btn-xs" role="button">Pick a CPU</a></td>
-		<td></td>
-		<td></td>
-		{% endif %}
-              </tr>
-
-	      <tr>
-		<td>Motherboard</td>
-		{% if results["mobo"] %}
-                <td><a href="/parts/{{ results['mobo']['itemnumber'] }}">{{ results["mobo"]["stuff"]["Title"] }}</a></td>
-                <td>{{ results["mobo"]["stuff"]["fPrice"] }}</td>
-                <td><a href="/remove/mobo" class="btn btn-default btn-xs" role="button">Remove</a></td>
-		{% else %}
-                <td><a href="/mobo" class="btn btn-default btn-xs" role="button">Pick a Motherboard</a></td>
-                <td></td>
-		<td></td>
-                {% endif %}
-	      </tr>
-
-              <tr>
-		<td>RAM</td>
-		{% if results["ram"] %}
-                <td><a href="/parts/{{ results['ram']['itemnumber'] }}">{{ results["ram"]["stuff"]["Title"] }}</a></td>
-                <td>{{ results["ram"]["stuff"]["fPrice"] }}</td>
-		<td><a href="/remove/ram" class="btn btn-default btn-xs" role="button">Remove</a></td>
-		{% else %}
-                <td><a href="/ram" class="btn btn-default btn-xs" role="button">Pick some RAM</a></td>
-                <td></td>
-		<td></td>
-                {% endif %}
-	      </tr>
-
-	      <tr>
-                <td>HDD</td>
-		{% if results["hdd"] %}
-                <td><a href="/parts/{{ results['hdd']['itemnumber'] }}">{{ results["hdd"]["stuff"]["Title"] }}</a></td>
-                <td>{{ results["hdd"]["stuff"]["fPrice"] }}</td>
-		<td><a href="/remove/hdd" class="btn btn-default btn-xs" role="button">Remove</a></td>
-                {% else %}
-                <td><a href="/hdd" class="btn btn-default btn-xs" role="button">Pick a Hard Drive</a></td>
-                <td></td>
-		<td></td>
-                {% endif %}
-              </tr>
-	      
-	      <tr>
-                <td>SSD</td>
-		{% if results["ssd"] %}
-                <td><a href="/parts/{{ results['ssd']['itemnumber'] }}">{{ results["ssd"]["stuff"]["Title"] }}</a></td>
-                <td>{{ results["ssd"]["stuff"]["fPrice"] }}</td>
-                <td><a href="/remove/ssd" class="btn btn-default btn-xs" role="button">Remove</a></td>
-		{% else %}
-                <td><a href="/ssd" class="btn btn-default btn-xs" role="button">Pick a SSD</a></td>
-                <td></td>
-		<td></td>
-                {% endif %}
-              </tr>
-	      
-	      <tr>
-                <td>Graphics Card</td>
-		{% if results["gpu"] %}
-                <td><a href="/parts/{{ results['gpu']['itemnumber'] }}">{{ results["gpu"]["stuff"]["Title"] }}</a></td>
-                <td>{{ results["gpu"]["stuff"]["fPrice"] }}</td>
-                <td><a href="/remove/gpu" class="btn btn-default btn-xs" role="button">Remove</a></td>
-		{% else %}
-                <td><a href="/gpu" class="btn btn-default btn-xs" role="button">Pick a Graphics Card</a></td>
-                <td></td>
-		<td></td>
-                {% endif %}
-              </tr>
-
-	      <tr>
-                <td>Power Supply</td>
-		{% if results["psu"] %}
-                <td><a href="/parts/{{ results['psu']['itemnumber'] }}">{{ results["psu"]["stuff"]["Title"] }}</a></td>
-                <td>{{ results["psu"]["stuff"]["fPrice"] }}</td>
-                <td><a href="/remove/psu" class="btn btn-default btn-xs" role="button">Remove</a></td>
-		{% else %}
-                <td><a href="/psu" class="btn btn-default btn-xs" role="button">Pick a Power Supply</a></td>
-                <td></td>
-		<td></td>
-                {% endif %}
-              </tr>
-
-	      <tr>
-                <td>Case</td>
-		{% if results["case"] %}
-                <td><a href="/parts/{{ results['case']['itemnumber'] }}">{{ results["case"]["stuff"]["Title"] }}</a></td>
-                <td>{{ results["case"]["stuff"]["fPrice"] }}</td>
-                <td><a href="/remove/case" class="btn btn-default btn-xs" role="button">Remove</a></td>
-		{% else %}
-                <td><a href="/case" class="btn btn-default btn-xs" role="button">Pick a Case</a></td>
-                <td></td>
-		<td></td>
-                {% endif %}
-              </tr>
-
-	      <tr>
-		<td>Total Price</td>
-		<td></td><td>${{ add }}</td><td></td>
-	      </tr>
-
+		<label>Budget:</label>
+		<input type="text" id="amount" style="width: 40px;" />
+		<div id="slider" style="width:400px;margin:0 0 10px 0;"></div>
+		<div id="build"></div>
             </tbody>
 	  </table>
         </div><!--/span-->
@@ -233,18 +120,9 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="../static/js/jquery.js"></script>
-    <script src="../static/js/bootstrap-transition.js"></script>
-    <script src="../static/js/bootstrap-alert.js"></script>
-    <script src="../static/js/bootstrap-modal.js"></script>
-    <script src="../static/js/bootstrap-dropdown.js"></script>
-    <script src="../static/js/bootstrap-scrollspy.js"></script>
-    <script src="../static/js/bootstrap-tab.js"></script>
-    <script src="../static/js/bootstrap-tooltip.js"></script>
-    <script src="../static/js/bootstrap-popover.js"></script>
-    <script src="../static/js/bootstrap-button.js"></script>
-    <script src="../static/js/bootstrap-collapse.js"></script>
-    <script src="../static/js/bootstrap-carousel.js"></script>
-    <script src="../static/js/bootstrap-typeahead.js"></script>
+    <script src="../static/js/slider.js"></script>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/jquery-ui.min.js"></script>
 
   </body>
 </html>

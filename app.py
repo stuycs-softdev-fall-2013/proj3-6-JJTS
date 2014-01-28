@@ -217,6 +217,10 @@ def case():
     else:
         return render_template('case.html', results=results)
 
+@app.route('/gen')
+def gen():
+    return render_template('gen.html')
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='0.0.0.0',port=6002)
