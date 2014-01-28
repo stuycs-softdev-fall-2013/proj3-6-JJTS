@@ -47,7 +47,7 @@ $("#filters :checkbox" ).click(function() {
     console.log(brands)
     $('tr td.brand').each(function(){
 	for (var i = 0; i < brands.length; i++) {
-	    if(brands[i] == ($(this).text().split(" ",1))){
+	    if(brands[i] == ($(this).text())){
 		break;
 	    }
 	}
