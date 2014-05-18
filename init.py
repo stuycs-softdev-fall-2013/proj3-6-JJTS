@@ -186,8 +186,8 @@ def init(group, names,something,thingy):
         pagenum = pagenum + 1
                 
         
-i = 0
+i = 3
 while (i < 8):
     init(group[i], names, 0,i)
     i = i + 1
-init(mobos, "mobos", 1,4)
+#init(mobos, "mobos", 1,4)
